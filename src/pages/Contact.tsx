@@ -121,7 +121,7 @@ const Contact = () => {
             </p>
           </div>
 
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center gap-6">
             <InfoCard />
             <form
               onSubmit={handleFormSubmit}

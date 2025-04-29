@@ -62,11 +62,20 @@ const Projects = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
+          className="text-left mb-4"
         >
-          <SectionHeading
-            title="Projects"
-            subtitle="A showcase of my recent work and projects"
-          />
+          <p
+            className={`text-4xl font-bold border-b-4 ${
+              isDarkMode ? "border-white text-white" : "border-black text-black"
+            } inline`}
+          >
+            Projects
+          </p>
+          <p
+            className={`py-6 ${isDarkMode ? "text-gray-300" : "text-gray-600"}`}
+          >
+            A showcase of my recent work and projects
+          </p>
         </motion.div>
 
         <motion.div

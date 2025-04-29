@@ -45,7 +45,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           {children}
         </motion.div>
       </main>
-      <Footer />
+      {/* <Footer /> */}
       <CustomCursor />
     </div>
   );

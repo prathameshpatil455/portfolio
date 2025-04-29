@@ -1,51 +1,37 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Code, Server, Wrench } from "lucide-react";
-import { Skill_data } from "../constants";
 import TechnologiesProvider from "../components/ui/TechnologiesProvider";
 import { useSelector } from "react-redux";
-
-interface Skill {
-  skill_name: string;
-  Image: string;
-  width: number;
-  height: number;
-}
 
 type Category = "frontend" | "backend" | "tools";
 
 // Categorize the skills
-const skillCategories: Record<Category, Skill[]> = {
-  frontend: Skill_data.filter((skill) =>
-    [
-      "Html 5",
-      "Css",
-      "Java Script",
-      "Tailwind Css",
-      "Material UI",
-      "React",
-      "Redux",
-      "React Query",
-      "Type Script",
-      "Next js 13",
-      "Framer Motion",
-    ].includes(skill.skill_name)
-  ),
-  backend: Skill_data.filter((skill) =>
-    [
-      "Node js",
-      "Express js",
-      "Mongo db",
-      "Fire base",
-      "Postger SQL",
-      "My SQL",
-      "Prisma",
-      "Graphql",
-    ].includes(skill.skill_name)
-  ),
-  tools: Skill_data.filter((skill) =>
-    ["Docker", "Figma", "Go", "React Native"].includes(skill.skill_name)
-  ),
+const skillCategories: Record<Category, string[]> = {
+  frontend: [
+    "Html 5",
+    "Css",
+    "Java Script",
+    "Tailwind Css",
+    "Material UI",
+    "React",
+    "Redux",
+    "React Query",
+    "Type Script",
+    "Next js 13",
+    "Framer Motion",
+  ],
+  backend: [
+    "Node js",
+    "Express js",
+    "Mongo db",
+    "Fire base",
+    "Postger SQL",
+    "My SQL",
+    "Prisma",
+    "Graphql",
+  ],
+  tools: ["Docker", "Figma", "Go", "React Native"],
 };
 
 const Experience = () => {
@@ -129,7 +115,7 @@ const Experience = () => {
                     : `${
                         isDarkMode
                           ? "bg-dark-100 text-gray-300 hover:bg-dark-50"
-                          : "bg-gray-100 text-gray-800 hover:bg-gray-200"
+                          : "bg-gray-200 text-gray-800 hover:bg-gray-300"
                       }`
                 }`}
               >
@@ -148,7 +134,7 @@ const Experience = () => {
                     : `${
                         isDarkMode
                           ? "bg-dark-100 text-gray-300 hover:bg-dark-50"
-                          : "bg-gray-100 text-gray-800 hover:bg-gray-200"
+                          : "bg-gray-200 text-gray-800 hover:bg-gray-300"
                       }`
                 }`}
               >
@@ -167,7 +153,7 @@ const Experience = () => {
                     : `${
                         isDarkMode
                           ? "bg-dark-100 text-gray-300 hover:bg-dark-50"
-                          : "bg-gray-100 text-gray-800 hover:bg-gray-200"
+                          : "bg-gray-200 text-gray-800 hover:bg-gray-300"
                       }`
                 }`}
               >
@@ -185,24 +171,18 @@ const Experience = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3 }}
               className={`p-6 rounded-lg ${
-                isDarkMode ? "bg-dark-100" : "bg-gray-50"
+                isDarkMode ? "bg-dark-100" : "bg-gray-200"
               }`}
             >
               <div className="flex flex-wrap gap-2 justify-start min-h-[300px]">
                 {skillCategories[selectedCategory].map(
-                  (skill: Skill, index: number) => (
+                  (skill: string, index: number) => (
                     <motion.div
                       key={index}
                       whileHover={{ scale: 1.05 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <TechnologiesProvider
-                        src={skill.Image}
-                        width={skill.width}
-                        height={skill.height}
-                        index={index}
-                        skillName={skill.skill_name}
-                      />
+                      <TechnologiesProvider skillName={skill} index={index} />
                     </motion.div>
                   )
                 )}

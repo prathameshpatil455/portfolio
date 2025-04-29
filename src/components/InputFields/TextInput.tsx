@@ -1,7 +1,24 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useState, ChangeEvent, KeyboardEvent, WheelEvent } from "react";
 import { TextField } from "@mui/material";
+
+interface TextInputProps {
+  label: string;
+  name: string;
+  value: string;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  onBlur: (e: ChangeEvent<HTMLInputElement>) => void;
+  placeholder?: string;
+  required?: boolean;
+  type?: string;
+  maxLength?: number;
+  checked?: boolean;
+  className?: string;
+  disabled?: boolean;
+  max?: number;
+  isDarkMode: boolean;
+}
 
 const TextInput = ({
   label,
@@ -10,35 +27,31 @@ const TextInput = ({
   onChange,
   onBlur,
   placeholder,
-  required,
-  type,
+  required = false,
+  type = "text",
   maxLength = 50,
-  checked,
-  className,
-  disabled,
+  checked = false,
+  className = "",
+  disabled = false,
   max,
   isDarkMode,
-}) => {
+}: TextInputProps) => {
   const [isFocused, setIsFocused] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleChange = (event) => {
-    const { value, type } = event.target;
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
     if (value.length <= maxLength) {
-      if (onChange) {
-        onChange(event);
-      }
+      onChange(event);
     }
   };
 
-  const handleBlur = (e) => {
-    if (onBlur) {
-      onBlur(e);
-    }
+  const handleBlur = (e: ChangeEvent<HTMLInputElement>) => {
+    onBlur(e);
     setIsFocused(false);
   };
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (type === "number") {
       const allowedKeys = ["Backspace", "Delete", "ArrowLeft", "ArrowRight"];
       const key = e.key;
@@ -49,10 +62,10 @@ const TextInput = ({
     }
   };
 
-  const handleWheel = (event) => {
-    if (event.target.type === "number") {
-      event.target.blur(); // temporarily removes focus from the input to prevent the scroll effect
-      setTimeout(() => event.target.focus(), 0); // re-focus the input after preventing the scroll
+  const handleWheel = (event: WheelEvent<HTMLInputElement>) => {
+    if (event.currentTarget.type === "number") {
+      event.currentTarget.blur();
+      setTimeout(() => event.currentTarget.focus(), 0);
     }
   };
 
@@ -61,7 +74,7 @@ const TextInput = ({
   };
 
   return (
-    <div className="relative flex flex-col flex-wrap">
+    <div className="relative flex flex-col flex-wrap w-full">
       <TextField
         label={
           <>
@@ -79,36 +92,68 @@ const TextInput = ({
         InputLabelProps={{
           shrink: type === "date" || value ? true : undefined,
           style: {
-            color: disabled ? "#808080" : isDarkMode ? "white" : "#808AA8",
-            zIndex: "5",
+            color: disabled
+              ? isDarkMode
+                ? "rgba(255, 255, 255, 0.5)"
+                : "rgba(0, 0, 0, 0.5)"
+              : isDarkMode
+              ? "rgba(255, 255, 255, 0.7)"
+              : "rgba(0, 0, 0, 0.7)",
           },
         }}
         InputProps={{
           inputProps: {
-            max: max,
+            max,
             checked,
             pattern: type === "number" ? "[0-9]*" : undefined,
             style: type === "number" ? { MozAppearance: "textfield" } : {},
             inputMode: type === "number" ? "numeric" : undefined,
             onWheel: handleWheel,
-            style: {
-              color: isDarkMode ? "white" : "black", // White for dark mode, black for light mode
-            },
-            // Avoid using maxLength in inputProps for number types
           },
           className: `${disabled ? "bg-gray-100" : ""} ${
-            isFocused ? "border-blue-500" : ""
+            isFocused
+              ? isDarkMode
+                ? "border-blue-400"
+                : "border-blue-500"
+              : ""
           }`,
+          style: {
+            color: isDarkMode ? "white" : "black",
+            backgroundColor: isDarkMode
+              ? "rgba(31, 41, 55, 0.5)"
+              : "rgba(255, 255, 255, 0.5)",
+          },
         }}
-        className={`w-full text-[#173048] text-base font-normal font-inter ${className} bg-transparent border rounded-md dark:bg-gray-800 dark:text-white dark:border-gray-600`}
+        className={`w-full ${className} ${
+          isDarkMode
+            ? "text-white border border-gray-700"
+            : "text-gray-900 border-2 border-gray-300"
+        }`}
         disabled={disabled}
         variant="outlined"
         size="medium"
         fullWidth
-        inputProps={{
-          maxLength: type !== "number" ? maxLength : undefined,
-          style: {
-            color: isDarkMode ? "white" : "black", // White for dark mode, black for light mode
+        sx={{
+          width: "100%",
+          "& .MuiOutlinedInput-root": {
+            "& fieldset": {
+              borderColor: isDarkMode
+                ? "rgba(255, 255, 255, 0.2)"
+                : "rgba(0, 0, 0, 0.3)",
+              borderWidth: isDarkMode ? "1px" : "2px",
+            },
+            "&:hover fieldset": {
+              borderColor: isDarkMode
+                ? "rgba(59, 130, 246, 0.5)"
+                : "rgba(59, 130, 246, 0.7)",
+              borderWidth: isDarkMode ? "1px" : "2px",
+            },
+            "&.Mui-focused fieldset": {
+              borderColor: isDarkMode
+                ? "rgb(59, 130, 246)"
+                : "rgb(59, 130, 246)",
+              borderWidth: isDarkMode ? "1px" : "2px",
+            },
           },
         }}
       />
@@ -118,7 +163,11 @@ const TextInput = ({
           onClick={togglePasswordVisibility}
           aria-label={showPassword ? "Hide password" : "Show password"}
         >
-          <span className="material-symbols-outlined text-gray-400 h-6 w-6">
+          <span
+            className={`material-symbols-outlined h-6 w-6 ${
+              isDarkMode ? "text-gray-400" : "text-gray-500"
+            }`}
+          >
             {showPassword ? "visibility" : "visibility_off"}
           </span>
         </span>

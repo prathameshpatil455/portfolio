@@ -26,38 +26,42 @@ export const InfoCard = () => {
         flex flex-col
         items-center
         gap-4
-        ${isDarkMode ? "bg-[#1a1a1a] text-white" : "bg-gray-50 text-gray-900"}
+        ${
+          isDarkMode
+            ? "bg-[#1a1a1a] text-white"
+            : "bg-gray-50 border border-gray-200 shadow-md text-black"
+        }
       `}
     >
       <div className="flex gap-4 items-center justify-start w-full">
-        <img
+        {/* <img
           src={ProfilePic}
           alt="Profile"
           className={`w-24 h-24 rounded-md object-cover border-4 ${
             isDarkMode ? "border-[#232323]" : "border-gray-200"
           }`}
-        />
+        /> */}
 
         <div className="flex w-full gap-2">
           <div className="w-full h-full flex flex-col gap-2 items-start">
             <h2
-              className={`text-xl font-bold ${
+              className={`text-2xl font-bold ${
                 isDarkMode ? "text-white" : "text-gray-900"
               }`}
             >
               Prathamesh Patil
             </h2>
             <p
-              className={`text-sm ${
-                isDarkMode ? "text-gray-400" : "text-gray-600"
+              className={`text-base ${
+                isDarkMode ? "text-gray-400" : "text-gray-700"
               }`}
             >
               I&apos;m a{" "}
-              <span className="text-purple-400">Software Developer</span>
+              <span className="text-purple-600">Software Developer</span>
             </p>
           </div>
 
-          <div className="flex items-start justify-end mb-2">
+          {/* <div className="flex items-start justify-end mb-2">
             <button
               className={`${
                 isDarkMode
@@ -67,18 +71,18 @@ export const InfoCard = () => {
             >
               Resume <IoMdCloudDownload size={18} />
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
 
-      <div className="flex flex-wrap gap-2 w-full text-xs text-center mt-2">
+      <div className="flex flex-wrap gap-2 w-full text-sm text-center mt-2">
         <div
           className={`flex items-center justify-center gap-2 ${
             isDarkMode ? "" : ""
           } rounded-full px-3 py-2`}
         >
           <FaGlobeAsia
-            className={`${isDarkMode ? "text-white" : "text-gray-900"} text-sm`}
+            className={`${isDarkMode ? "text-white" : "text-gray-900"} text-lg`}
           />
           <span>India</span>
         </div>
@@ -89,7 +93,7 @@ export const InfoCard = () => {
           } rounded-full px-3 py-2 col-span-1`}
         >
           <FaLanguage
-            className={`${isDarkMode ? "text-white" : "text-gray-900"} text-sm`}
+            className={`${isDarkMode ? "text-white" : "text-gray-900"} text-lg`}
           />
           <span>English, Kannada & Hindi</span>
         </div>
@@ -100,7 +104,7 @@ export const InfoCard = () => {
           } rounded-full px-3 py-2`}
         >
           <FaCode
-            className={`${isDarkMode ? "text-white" : "text-gray-900"} text-sm`}
+            className={`${isDarkMode ? "text-white" : "text-gray-900"} text-lg`}
           />
           <span>Software Developer</span>
         </div>
@@ -111,7 +115,7 @@ export const InfoCard = () => {
           } rounded-full px-3 py-2 col-span-2`}
         >
           <FaGraduationCap
-            className={`${isDarkMode ? "text-white" : "text-gray-900"} text-sm`}
+            className={`${isDarkMode ? "text-white" : "text-gray-900"} text-lg`}
           />
           <span>BE (Honors) in CS</span>
         </div>
@@ -122,7 +126,7 @@ export const InfoCard = () => {
           } rounded-full px-3 py-2`}
         >
           <FaClock
-            className={`${isDarkMode ? "text-white" : "text-gray-900"} text-sm`}
+            className={`${isDarkMode ? "text-white" : "text-gray-900"} text-lg`}
           />
           <span>IST</span>
         </div>
@@ -335,16 +339,101 @@ export const ImageCard = () => {
 
   return (
     <div
-      className={`rounded-xl shadow-sm relative overflow-hidden h-full transition-all duration-300 hover:shadow-md hover:-translate-y-0.5 group flex items-center justify-center max-w-[300px] max-h-[400px] ${
+      className={`rounded-xl shadow-sm relative overflow-hidden h-full transition-all duration-300 hover:shadow-md hover:-translate-y-0.5 group ${
         isDarkMode ? "bg-gray-800" : "bg-white"
       }`}
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-black/0 to-black/60 z-10"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-black/0 to-black/80 z-10"></div>
       <img
         src={ProfilePic}
         alt="Developer workspace"
-        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-110"
+        className="w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-110"
       />
+    </div>
+  );
+};
+
+export const AboutMe = () => {
+  const { isDarkMode } = useSelector(
+    (state: { theme: { isDarkMode: boolean } }) => state.theme
+  );
+
+  return (
+    <div
+      className={`rounded-2xl p-6 ${
+        isDarkMode
+          ? "bg-[#1a1a1a] text-white"
+          : "bg-gray-50 border border-gray-200 shadow-md text-black"
+      }`}
+    >
+      <div className="flex flex-col gap-4">
+        <div className="flex items-center gap-2">
+          <FaCode
+            className={`text-xl ${
+              isDarkMode ? "text-purple-400" : "text-purple-600"
+            }`}
+          />
+          <h2
+            className={`text-xl font-bold ${
+              isDarkMode ? "text-white" : "text-black"
+            }`}
+          >
+            About Me
+          </h2>
+        </div>
+
+        <p className={`text-sm ${isDarkMode ? "text-gray-300" : "text-black"}`}>
+          A passionate Software Developer with a keen interest in building
+          modern web applications and solving complex problems through code.
+        </p>
+
+        <div className="flex flex-col gap-3">
+          <div className="flex items-center gap-2">
+            <FaBriefcase
+              className={`${
+                isDarkMode ? "text-purple-400" : "text-purple-600"
+              }`}
+            />
+            <span
+              className={`text-sm ${
+                isDarkMode ? "text-gray-300" : "text-black"
+              }`}
+            >
+              1+ years of professional experience
+            </span>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <FaGraduationCap
+              className={`${
+                isDarkMode ? "text-purple-400" : "text-purple-600"
+              }`}
+            />
+            <span
+              className={`text-sm ${
+                isDarkMode ? "text-gray-300" : "text-black"
+              }`}
+            >
+              BE (Honors) in Computer Science
+            </span>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <FaCode
+              className={`${
+                isDarkMode ? "text-purple-400" : "text-purple-600"
+              }`}
+            />
+            <span
+              className={`text-sm ${
+                isDarkMode ? "text-gray-300" : "text-black"
+              }`}
+            >
+              Specialized in React, React Native, and modern web technologies
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
