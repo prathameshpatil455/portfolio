@@ -1,61 +1,115 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { motion } from "framer-motion";
+import { ExternalLink } from "lucide-react";
 
-const ProjectCard = ({ project }) => {
+interface Project {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  tags: string[];
+  demoUrl: string;
+  codeUrl: string;
+}
+
+interface ProjectCardProps {
+  project: Project;
+}
+
+const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   const { isDarkMode } = useSelector(
     (state: { theme: { isDarkMode: boolean } }) => state.theme
   );
 
   return (
-    <div
-      key={project.id}
-      className={`flex flex-col md:flex-row items-center gap-6 mb-16 $`}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.5 }}
+      className={`group relative overflow-hidden rounded-lg transition-all duration-300 ${
+        isDarkMode
+          ? "bg-dark-100 border-dark-200 hover:border-primary/30"
+          : "bg-gray-50 border-gray-200 hover:border-primary/30"
+      }`}
     >
-      <div className="flex-shrink-0">
+      <div className="relative aspect-[3/1.5] overflow-hidden">
         <img
           src={project.image}
-          alt={project.title + project.id}
-          className="rounded-md duration-200"
-          width={400}
-          height={300}
-          priority
+          alt={project.title}
+          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </div>
-      <div
-        className={`flex flex-col justify-center ${
-          isDarkMode ? "text-white" : "text-black"
-        } p-4`}
-      >
-        <h3 className="text-2xl font-semibold">{project.title}</h3>
-        <p className="py-2">{project.description}</p>
-        <div className="flex flex-wrap gap-2 mt-1">
-          {project.tags.map((tag, index) => (
+
+      <div className="p-4">
+        <h3
+          className={`text-xl font-semibold mb-2 ${
+            isDarkMode ? "text-white" : "text-gray-900"
+          }`}
+        >
+          {project.title}
+        </h3>
+
+        <p
+          className={`text-sm mb-4 ${
+            isDarkMode ? "text-gray-300" : "text-gray-600"
+          }`}
+        >
+          {project.description}
+        </p>
+
+        <div className="flex flex-wrap gap-2 mb-6">
+          {project.tags.map((tag: string, index: number) => (
             <span
               key={index}
-              className={`px-3 py-1.5 rounded-full text-xs font-semibold ${
-                isDarkMode ? "bg-gray-700 text-white" : "bg-gray-200 text-black"
+              className={`px-3 py-1 rounded-full text-xs font-medium ${
+                isDarkMode
+                  ? "bg-dark-200 text-gray-300"
+                  : "bg-gray-200 text-gray-700"
               }`}
             >
               {tag}
             </span>
           ))}
         </div>
-        <div className="flex items-start justify-start gap-4 max-w-md mt-4">
-          <button
-            className="group text-black dark:text-white w-fit px-6 py-3 flex items-center rounded-md border border-black dark:border-white cursor-pointer hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black"
-            onClick={() => window.open(project.demoUrl, "_blank")}
+
+        <div className="flex items-center gap-4">
+          <motion.a
+            href={project.demoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className={`flex items-center gap-2 px-4 py-2 rounded-md transition-colors ${
+              isDarkMode
+                ? "bg-primary hover:bg-primary-600 text-white"
+                : "bg-primary hover:bg-primary-600 text-white"
+            }`}
           >
-            Demo
-          </button>
-          <button
-            className="group text-black dark:text-white w-fit px-6 py-3 flex items-center rounded-md border border-black dark:border-white cursor-pointer hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black"
-            onClick={() => window.open(project.codeUrl, "_blank")}
+            <span className="text-sm font-medium">Live Demo</span>
+            <ExternalLink className="w-4 h-4" />
+          </motion.a>
+
+          <motion.a
+            href={project.codeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className={`flex items-center gap-2 px-4 py-2 rounded-md transition-colors ${
+              isDarkMode
+                ? "bg-dark-200 hover:bg-dark-300 text-gray-300"
+                : "bg-gray-200 hover:bg-gray-300 text-gray-700"
+            }`}
           >
-            Code
-          </button>
+            <span className="text-sm font-medium">View Code</span>
+            <ExternalLink className="w-4 h-4" />
+          </motion.a>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

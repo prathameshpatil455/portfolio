@@ -18,7 +18,7 @@ const Home = () => {
   return (
     <section
       id="home"
-      className={`h-screen relative overflow-hidden flex items-center ${
+      className={`min-h-screen relative overflow-hidden flex items-center ${
         isDarkMode ? "bg-black" : "bg-white"
       }`}
     >

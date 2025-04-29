@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { useSelector } from "react-redux";
 
 interface Props {
   src: string;
@@ -16,6 +17,10 @@ const TechnologiesProvider = ({ src, index, skillName }: Props) => {
   const { ref, inView } = useInView({
     triggerOnce: true,
   });
+
+  const { isDarkMode } = useSelector(
+    (state: { theme: { isDarkMode: boolean } }) => state.theme
+  );
 
   const imageVariants = {
     hidden: { opacity: 0 },
@@ -32,16 +37,22 @@ const TechnologiesProvider = ({ src, index, skillName }: Props) => {
       animate={inView ? "visible" : "hidden"}
       custom={index}
       transition={{ delay: index * animationDelay }}
-      className="flex flex-col gap-1 items-center"
+      className={`group flex flex-col gap-2 items-center p-2 rounded-lg transition-all duration-300 ${
+        isDarkMode ? "hover:bg-dark-50" : "hover:bg-gray-100"
+      }`}
     >
-      <img
-        src={src}
-        width={50}
-        height={50}
-        className="max-h-12 max-w-12 object-contain"
-        alt="skill image"
-      />
-      <p className="text-sm font-medium text-wrap text-center max-w-20">
+      <div className="w-16 h-16 flex items-center justify-center">
+        <img
+          src={src}
+          className="w-12 h-12 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
+          alt={`${skillName} icon`}
+        />
+      </div>
+      <p
+        className={`text-sm font-medium text-center max-w-24 ${
+          isDarkMode ? "text-gray-300" : "text-gray-600"
+        }`}
+      >
         {skillName}
       </p>
     </motion.div>

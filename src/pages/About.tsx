@@ -45,8 +45,8 @@ const About = () => {
   return (
     <section
       id="about"
-      className={`min-h-screen w-full pt-12 ${
-        isDarkMode ? "bg-gray-900 text-white" : "bg-white text-black"
+      className={`min-h-screen w-full flex items-center justify-center pt-12 ${
+        isDarkMode ? "bg-black text-white" : "bg-white text-black"
       } box-border`}
     >
       <BentoGrid />

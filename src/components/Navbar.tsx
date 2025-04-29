@@ -83,7 +83,7 @@ const Navbar = () => {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      const offset = 80; // Height of the fixed navbar
+      const offset = 0; // Height of the fixed navbar
       const elementPosition = element.offsetTop - offset;
       window.scrollTo({
         top: elementPosition,
@@ -103,9 +103,7 @@ const Navbar = () => {
         }}
         transition={{ duration: 0.2 }}
         className={`flex justify-end md:justify-center items-center w-full h-20 px-4 fixed ${
-          isScrolled
-            ? `${isDarkMode ? "" : ""} py-3 shadow-lg`
-            : "bg-transparent py-5"
+          isScrolled ? `${isDarkMode ? "" : ""} py-3` : "py-5"
         }`}
         style={{
           zIndex: 30,
