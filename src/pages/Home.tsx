@@ -15,10 +15,17 @@ const Home = () => {
     document.title = "Portfolio | Home";
   }, []);
 
+  const scrollToProjects = () => {
+    const projectsSection = document.getElementById("projects");
+    if (projectsSection) {
+      projectsSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section
       id="home"
-      className={`min-h-screen relative overflow-hidden flex items-center ${
+      className={`min-h-screen relative overflow-hidden flex items-center md:px-12 px-4 ${
         isDarkMode ? "bg-black" : "bg-white"
       }`}
     >
@@ -89,6 +96,7 @@ const Home = () => {
                     ? "text-white border-white hover:bg-white hover:text-black"
                     : "text-black border-black hover:bg-black hover:text-white"
                 }`}
+                onClick={scrollToProjects}
               >
                 Portfolio
                 <span className="group-hover:rotate-90 duration-500">
@@ -99,7 +107,7 @@ const Home = () => {
           </motion.div>
 
           <motion.div
-            className="hidden lg:flex justify-center"
+            className="hidden md:flex justify-center"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}

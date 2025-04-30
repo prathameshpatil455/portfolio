@@ -53,7 +53,7 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className={`min-h-screen w-full pt-20 max-sm:pt-72 ${
+      className={`min-h-screen w-full pt-12 md:px-12 px-4 max-sm:pt-12 ${
         isDarkMode ? "bg-black" : "bg-white"
       }`}
     >

@@ -8,7 +8,7 @@ const InfoCard = () => {
 
   return (
     <div
-      className={`w-full max-w-lg aspect-video h-full flex items-center justify-center rounded-md ${
+      className={`w-full max-w-md lg:max-w-lg aspect-video h-full flex items-center justify-center rounded-md ${
         isDarkMode
           ? "bg-gray-800/50 backdrop-blur-sm"
           : "bg-white/50 backdrop-blur-sm"

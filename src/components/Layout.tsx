@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import Navbar from "./Navbar";
-import Footer from "./Footer";
 import { RootState } from "../store";
 import { updateCursorPosition, closeMenu } from "../store/slices/uiSlice";
 import CustomCursor from "./ui/CustomCursor";
@@ -45,7 +44,6 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           {children}
         </motion.div>
       </main>
-      {/* <Footer /> */}
       <CustomCursor />
     </div>
   );

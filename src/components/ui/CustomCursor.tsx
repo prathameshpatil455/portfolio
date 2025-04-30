@@ -17,6 +17,10 @@ const CustomCursor: React.FC = () => {
   const outerCursorX = useSpring(cursorX, { damping: 20, stiffness: 300 });
   const outerCursorY = useSpring(cursorY, { damping: 20, stiffness: 300 });
 
+  // Check if device is touch-enabled
+  const isTouchDevice =
+    "ontouchstart" in window || navigator.maxTouchPoints > 0;
+
   console.log(isDarkMode, "dark mode");
 
   // Update cursor color when theme changes
@@ -27,23 +31,27 @@ const CustomCursor: React.FC = () => {
   }, [isDarkMode, isHovered]);
 
   useEffect(() => {
-    const moveCursor = (e: MouseEvent) => {
-      cursorX.set(e.clientX);
-      cursorY.set(e.clientY);
-    };
+    if (!isTouchDevice) {
+      const moveCursor = (e: MouseEvent) => {
+        cursorX.set(e.clientX);
+        cursorY.set(e.clientY);
+      };
 
-    window.addEventListener("mousemove", moveCursor);
-    return () => {
-      window.removeEventListener("mousemove", moveCursor);
-    };
-  }, [cursorX, cursorY]);
+      window.addEventListener("mousemove", moveCursor);
+      return () => {
+        window.removeEventListener("mousemove", moveCursor);
+      };
+    }
+  }, [cursorX, cursorY, isTouchDevice]);
 
   useEffect(() => {
-    document.body.style.cursor = "none";
-    return () => {
-      document.body.style.cursor = "default";
-    };
-  }, []);
+    if (!isTouchDevice) {
+      document.body.style.cursor = "none";
+      return () => {
+        document.body.style.cursor = "default";
+      };
+    }
+  }, [isTouchDevice]);
 
   const handleMouseEnter = (e: React.MouseEvent) => {
     const backgroundColor = getComputedStyle(e.currentTarget).backgroundColor;

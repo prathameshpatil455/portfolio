@@ -47,7 +47,7 @@ const WindowJson = () => {
             <span
               className={isDarkMode ? "text-accent-400" : "text-accent-600"}
             >
-              'Alex Smith'
+              'Prathamesh Patil'
             </span>
             ,
             <br />
@@ -55,8 +55,50 @@ const WindowJson = () => {
             <span
               className={isDarkMode ? "text-accent-400" : "text-accent-600"}
             >
-              'Full Stack Developer'
+              'Software Developer'
             </span>
+            ,
+            <br />
+            {"  "}email:{" "}
+            <span
+              className={isDarkMode ? "text-accent-400" : "text-accent-600"}
+            >
+              'prathameshpatil1513@gmail.com'
+            </span>
+            ,
+            {/* <br />
+            {"  "}location:{" "}
+            <span
+              className={isDarkMode ? "text-accent-400" : "text-accent-600"}
+            >
+              'Bangalore, India'
+            </span> */}
+            {/* ,
+            <br />
+            {"  "}github:{" "}
+            <span
+              className={isDarkMode ? "text-accent-400" : "text-accent-600"}
+            >
+              'github.com/prathameshpatil445'
+            </span>
+            ,
+            <br />
+            {"  "}linkedin:{" "}
+            <span
+              className={isDarkMode ? "text-accent-400" : "text-accent-600"}
+            >
+              'linkedin.com/in/alexsmith'
+            </span> */}
+            <br />
+            {"  "}experience: <span className="text-blue-500">'1+ years'</span>
+            {/* ,
+            <br />
+            {"  "}specialization:{" "}
+            <span
+              className={isDarkMode ? "text-accent-400" : "text-accent-600"}
+            >
+              'Front end Development'
+            </span> */}
             ,
             <br />
             {"  "}skills: [
@@ -77,11 +119,51 @@ const WindowJson = () => {
             >
               'TypeScript'
             </span>
+            ,{" "}
+            <span
+              className={isDarkMode ? "text-accent-400" : "text-accent-600"}
+            >
+              'Python'
+            </span>
+            ,{" "}
+            <span
+              className={isDarkMode ? "text-accent-400" : "text-accent-600"}
+            >
+              'SQL'
+            </span>
             ],
             <br />
-            {"  "}isAvailableForHire:{" "}
-            <span className="text-green-500">true</span>
+            {"  "}frameworks: [
+            <span
+              className={isDarkMode ? "text-accent-400" : "text-accent-600"}
+            >
+              'Next.js'
+            </span>
+            ,{" "}
+            <span
+              className={isDarkMode ? "text-accent-400" : "text-accent-600"}
+            >
+              'Express'
+            </span>
+            ],
             <br />
+            {"  "}databases: [
+            <span
+              className={isDarkMode ? "text-accent-400" : "text-accent-600"}
+            >
+              'PostgreSQL'
+            </span>
+            ,{" "}
+            <span
+              className={isDarkMode ? "text-accent-400" : "text-accent-600"}
+            >
+              'MongoDB'
+            </span>
+            ],
+            <br />
+            {/* {"  "}isAvailableForHire:{" "}
+            <span className="text-green-500">true</span>
+            <br /> */}
             {"}"};
           </code>
         </pre>

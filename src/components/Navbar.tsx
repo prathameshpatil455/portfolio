@@ -162,8 +162,10 @@ const Navbar = () => {
         {/* Mobile Icons */}
         <div className="flex md:hidden items-center justify-end gap-4">
           <div
-            className={`cursor-pointer text-xl p-2 rounded-md border ${
-              isDarkMode ? "border-white" : "border-black"
+            className={`cursor-pointer text-xl p-2 rounded-md border $${
+              isDarkMode
+                ? "border-white bg-black text-white"
+                : "border-black bg-white text-black"
             }`}
             aria-label="Toggle Dark Mode"
             onClick={handleToggleTheme}
@@ -184,7 +186,9 @@ const Navbar = () => {
 
           <div
             onClick={handleNavToggle}
-            className="cursor-pointer p-2 rounded-md z-10"
+            className={`cursor-pointer p-2 rounded-md z-10 ${
+              isDarkMode ? " bg-black text-white" : " bg-white text-black"
+            }`}
             aria-label="Menu"
           >
             {nav ? (
@@ -196,13 +200,13 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Menu Toggle */}
-        <button
+        {/* <button
           className="lg:hidden text-gray-200 hover:text-white focus:outline-none"
           onClick={() => dispatch(toggleMenu())}
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
         >
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        </button> */}
 
         {nav && (
           <motion.ul

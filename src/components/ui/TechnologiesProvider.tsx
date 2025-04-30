@@ -10,26 +10,26 @@ import {
   SiJavascript,
   SiTailwindcss,
   SiReact,
-  SiRedux,
-  SiReactquery,
   SiTypescript,
   SiNextdotjs,
   SiFramer,
-  SiStripe,
   SiNodedotjs,
   SiExpress,
   SiMongodb,
-  SiFirebase,
-  SiPostgresql,
-  SiMysql,
-  SiPrisma,
-  SiGraphql,
   SiDocker,
   SiFigma,
-  SiGo,
-  SiMaterialdesign,
+  SiPython,
+  SiC,
+  SiTensorflow,
+  SiPandas,
+  SiNumpy,
+  SiScikitlearn,
+  SiJupyter,
+  SiGooglecolab,
+  SiGithub,
+  SiPostgresql,
 } from "react-icons/si";
-import { FaMobileScreen } from "react-icons/fa6";
+import { FaJava, FaChartLine, FaCode } from "react-icons/fa";
 import { IconType } from "react-icons";
 
 interface Props {
@@ -38,30 +38,42 @@ interface Props {
 }
 
 const iconMap: Record<string, { icon: IconType; color: string }> = {
-  "Html 5": { icon: SiHtml5, color: "#E34F26" },
-  Css: { icon: SiCss3, color: "#1572B6" },
-  "Java Script": { icon: SiJavascript, color: "#F7DF1E" },
-  "Tailwind Css": { icon: SiTailwindcss, color: "#06B6D4" },
-  "Material UI": { icon: SiMaterialdesign, color: "#007FFF" },
-  React: { icon: SiReact, color: "#61DAFB" },
-  Redux: { icon: SiRedux, color: "#764ABC" },
-  "React Query": { icon: SiReactquery, color: "#FF4154" },
-  "Type Script": { icon: SiTypescript, color: "#3178C6" },
-  "Next js 13": { icon: SiNextdotjs, color: "#000000" },
+  // Frontend
+  HTML: { icon: SiHtml5, color: "#E34F26" },
+  CSS: { icon: SiCss3, color: "#1572B6" },
+  JavaScript: { icon: SiJavascript, color: "#F7DF1E" },
+  ReactJS: { icon: SiReact, color: "#61DAFB" },
+  "Tailwind CSS": { icon: SiTailwindcss, color: "#06B6D4" },
+  TypeScript: { icon: SiTypescript, color: "#3178C6" },
+  "Next.js": { icon: SiNextdotjs, color: "#000000" },
   "Framer Motion": { icon: SiFramer, color: "#0055FF" },
-  "Stripe Payment": { icon: SiStripe, color: "#008CDD" },
-  "Node js": { icon: SiNodedotjs, color: "#339933" },
-  "Express js": { icon: SiExpress, color: "#000000" },
-  "Mongo db": { icon: SiMongodb, color: "#47A248" },
-  "Fire base": { icon: SiFirebase, color: "#FFCA28" },
-  "Postger SQL": { icon: SiPostgresql, color: "#4169E1" },
-  "My SQL": { icon: SiMysql, color: "#4479A1" },
-  Prisma: { icon: SiPrisma, color: "#2D3748" },
-  Graphql: { icon: SiGraphql, color: "#E10098" },
-  "React Native": { icon: FaMobileScreen, color: "#61DAFB" },
+
+  // Backend
+  Python: { icon: SiPython, color: "#3776AB" },
+  Java: { icon: FaJava, color: "#007396" },
+  C: { icon: SiC, color: "#A8B9CC" },
+  "Node.js": { icon: SiNodedotjs, color: "#339933" },
+  "Express.js": { icon: SiExpress, color: "#000000" },
+  MongoDB: { icon: SiMongodb, color: "#47A248" },
+  SQL: { icon: SiPostgresql, color: "#4169E1" },
+  Tensorflow: { icon: SiTensorflow, color: "#FF6F00" },
+  Langchain: { icon: SiPython, color: "#3776AB" },
+
+  // Developer Tools
+  "VS Code": { icon: FaCode, color: "#007ACC" },
+  "Google Colab": { icon: SiGooglecolab, color: "#F9AB00" },
+  "Jupyter Notebook": { icon: SiJupyter, color: "#F37626" },
+  Matlab: { icon: SiPython, color: "#0076A8" },
+  GitHub: { icon: SiGithub, color: "#181717" },
   Docker: { icon: SiDocker, color: "#2496ED" },
   Figma: { icon: SiFigma, color: "#F24E1E" },
-  Go: { icon: SiGo, color: "#00ADD8" },
+
+  // Data Analysis
+  Pandas: { icon: SiPandas, color: "#150458" },
+  Numpy: { icon: SiNumpy, color: "#013243" },
+  "Scikit-learn": { icon: SiScikitlearn, color: "#F7931E" },
+  Matplotlib: { icon: FaChartLine, color: "#11557C" },
+  Statsmodels: { icon: SiPython, color: "#3776AB" },
 };
 
 const TechnologiesProvider = ({ skillName, index }: Props) => {

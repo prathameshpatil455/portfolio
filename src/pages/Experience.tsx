@@ -1,37 +1,50 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Code, Server, Wrench } from "lucide-react";
+import { Code, Server, Laptop, Brain } from "lucide-react";
 import TechnologiesProvider from "../components/ui/TechnologiesProvider";
 import { useSelector } from "react-redux";
 
-type Category = "frontend" | "backend" | "tools";
+type Category = "frontend" | "backend" | "developer_tools" | "data_analysis";
 
 // Categorize the skills
 const skillCategories: Record<Category, string[]> = {
   frontend: [
-    "Html 5",
-    "Css",
-    "Java Script",
-    "Tailwind Css",
-    "Material UI",
-    "React",
-    "Redux",
-    "React Query",
-    "Type Script",
-    "Next js 13",
+    // "HTML",
+    // "CSS",
+    "JavaScript",
+    "ReactJS",
+    "Tailwind CSS",
+    "TypeScript",
+    "Next.js",
     "Framer Motion",
   ],
   backend: [
-    "Node js",
-    "Express js",
-    "Mongo db",
-    "Fire base",
-    "Postger SQL",
-    "My SQL",
-    "Prisma",
-    "Graphql",
+    "Python",
+    "Java",
+    "C",
+    "Node.js",
+    "Express.js",
+    "MongoDB",
+    "SQL",
+    "Tensorflow",
+    "Langchain",
   ],
-  tools: ["Docker", "Figma", "Go", "React Native"],
+  developer_tools: [
+    "VS Code",
+    "Google Colab",
+    "Jupyter Notebook",
+    "Matlab",
+    "GitHub",
+    "Docker",
+    "Figma",
+  ],
+  data_analysis: [
+    "Pandas",
+    "Numpy",
+    "Scikit-learn",
+    "Matplotlib",
+    "Statsmodels",
+  ],
 };
 
 const Experience = () => {
@@ -67,7 +80,7 @@ const Experience = () => {
   return (
     <section
       id="experience"
-      className={`min-h-screen w-full pt-12 flex items-center justify-center max-sm:pt-72 ${
+      className={`min-h-screen w-full pt-12 md:px-12 px-4 flex items-center justify-center max-sm:pt-12 ${
         isDarkMode ? "bg-black" : "bg-white"
       }`}
     >
@@ -142,9 +155,9 @@ const Experience = () => {
                 <span>Backend</span>
               </button>
               <button
-                onClick={() => setSelectedCategory("tools")}
+                onClick={() => setSelectedCategory("developer_tools")}
                 className={`w-full flex items-center gap-3 px-4 py-4 md:py-6 rounded-lg transition-all duration-300 ${
-                  selectedCategory === "tools"
+                  selectedCategory === "developer_tools"
                     ? `${
                         isDarkMode
                           ? "bg-primary text-white"
@@ -157,8 +170,27 @@ const Experience = () => {
                       }`
                 }`}
               >
-                <Wrench size={24} />
-                <span>Tools</span>
+                <Laptop size={24} />
+                <span>Developer Tools</span>
+              </button>
+              <button
+                onClick={() => setSelectedCategory("data_analysis")}
+                className={`w-full flex items-center gap-3 px-4 py-4 md:py-6 rounded-lg transition-all duration-300 ${
+                  selectedCategory === "data_analysis"
+                    ? `${
+                        isDarkMode
+                          ? "bg-primary text-white"
+                          : "bg-primary text-white"
+                      }`
+                    : `${
+                        isDarkMode
+                          ? "bg-dark-100 text-gray-300 hover:bg-dark-50"
+                          : "bg-gray-200 text-gray-800 hover:bg-gray-300"
+                      }`
+                }`}
+              >
+                <Brain size={24} />
+                <span>Data Analysis</span>
               </button>
             </div>
           </motion.div>

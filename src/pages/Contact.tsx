@@ -102,7 +102,7 @@ const Contact = () => {
       <div
         className={`box-border w-full h-screen ${
           isDarkMode ? "bg-black text-white" : "bg-white text-black"
-        } pt-16 pb-12 px-8`}
+        } pt-16 pb-12 md:px-12 px-4`}
       >
         <div className="flex flex-col p-4 justify-center max-w-screen-lg mx-auto">
           <div className="pb-2">
@@ -122,7 +122,9 @@ const Contact = () => {
           </div>
 
           <div className="flex justify-between items-center gap-6">
-            <InfoCard />
+            <div className="items-center justify-center md:flex hidden">
+              <InfoCard />
+            </div>
             <form
               onSubmit={handleFormSubmit}
               className="flex flex-col gap-4 w-full md:w-1/2"

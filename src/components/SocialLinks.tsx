@@ -5,7 +5,7 @@ import { BsFillPersonLinesFill } from "react-icons/bs";
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
 
-interface SocialLinksProps {
+interface SocialLink {
   id: number;
   child: React.ReactNode;
   href: string;
@@ -18,7 +18,7 @@ const SocialLinks = () => {
     (state: { theme: { isDarkMode: boolean } }) => state.theme.isDarkMode
   );
 
-  const links: SocialLinksProps = [
+  const links: SocialLink[] = [
     {
       id: 1,
       child: (
@@ -29,7 +29,6 @@ const SocialLinks = () => {
       ),
       href: "https://www.linkedin.com/in/prathamesh-patil-off9867/",
       style: "rounded-tr-md",
-      download: false,
     },
     {
       id: 2,
@@ -39,8 +38,6 @@ const SocialLinks = () => {
         </>
       ),
       href: "https://github.com/prathameshpatil455",
-      style: "",
-      download: false,
     },
     {
       id: 3,
@@ -51,8 +48,6 @@ const SocialLinks = () => {
         </>
       ),
       href: "mailto:prathameshpatil1513@gmail.com",
-      style: "",
-      download: false,
     },
     {
       id: 4,
@@ -65,7 +60,7 @@ const SocialLinks = () => {
           />
         </>
       ),
-      href: "/Prathamesh_Patil_Resume.pdf",
+      href: "/resume.pdf",
       style: "rounded-br-md",
       download: true,
     },
@@ -84,12 +79,12 @@ const SocialLinks = () => {
               isDarkMode
                 ? "bg-black text-white border-gray-200"
                 : "bg-white text-black border-black"
-            } ${style} `}
+            } ${style || ""}`}
           >
             <a
               href={href}
               className="flex justify-between items-center w-full"
-              download={download ? true : undefined}
+              download={download}
               target={download ? undefined : "_blank"}
               rel={download ? undefined : "noreferrer"}
             >
