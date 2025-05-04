@@ -1,4 +1,8 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import imageStegnography from "../../../public/images/portfolio/imageStegnography.png";
+import pokdexCollection from "../../../public/images/portfolio/pokdexCollection.png";
+import Game2048 from "../../../public/images/portfolio/2048Game.png";
+import imageEditor from "../../../public/images/portfolio/imageEditor.png";
 
 export interface Project {
   id: number;
@@ -19,61 +23,73 @@ interface ProjectState {
 const projects: Project[] = [
   {
     id: 1,
-    title: 'E-Commerce Platform',
-    description: 'A full-featured e-commerce platform built with React, Node.js, and MongoDB.',
-    image: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    tags: ['React', 'Node.js', 'MongoDB', 'Express', 'Redux'],
-    demoUrl: 'https://demo-ecommerce.com',
-    codeUrl: 'https://github.com/username/ecommerce',
+    title: "Image Stegnography",
+    description:
+      "A full-featured e-commerce platform built with React, Node.js, and MongoDB.",
+    image: imageStegnography,
+    tags: [
+      "React",
+      "Encryption",
+      "Decryption",
+      "Stegnography",
+      "CyberSecurity",
+    ],
+    demoUrl: "https://image-stegnography.netlify.app/",
+    codeUrl: "https://github.com/prathameshpatil455/ImageStegnography",
   },
   {
     id: 2,
-    title: 'Task Management App',
-    description: 'A Kanban-style task management application with drag-and-drop functionality.',
-    image: 'https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    tags: ['React', 'TypeScript', 'Firebase', 'Tailwind CSS'],
-    demoUrl: 'https://task-management-app.com',
-    codeUrl: 'https://github.com/username/task-management',
+    title: "Pokedex collection",
+    description:
+      "A Kanban-style task management application with drag-and-drop functionality.",
+    image: pokdexCollection,
+    tags: ["React", "TypeScript", "Firebase", "Tailwind CSS", "Poke Api"],
+    demoUrl: "https://pokedex-collection.netlify.app/",
+    codeUrl: "https://github.com/prathameshpatil455/pokedex",
   },
   {
     id: 3,
-    title: 'Weather Dashboard',
-    description: 'Real-time weather dashboard with global forecasts and interactive maps.',
-    image: 'https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    tags: ['React', 'Redux', 'OpenWeatherMap API', 'Chart.js'],
-    demoUrl: 'https://weather-dashboard.com',
-    codeUrl: 'https://github.com/username/weather-dashboard',
+    title: "2048 Game",
+    description:
+      "Real-time weather dashboard with global forecasts and interactive maps.",
+    image: Game2048,
+    tags: ["React-Native", "Redux", "Native-wind"],
+    // demoUrl: "https://weather-dashboard.com",
+    codeUrl: "https://github.com/prathameshpatil455/0248",
   },
   {
     id: 4,
-    title: 'Social Media Dashboard',
-    description: 'An analytics dashboard for monitoring social media performance across platforms.',
-    image: 'https://images.pexels.com/photos/3194519/pexels-photo-3194519.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    tags: ['React', 'Redux', 'D3.js', 'Express', 'Social APIs'],
-    demoUrl: 'https://social-dashboard.com',
-    codeUrl: 'https://github.com/username/social-dashboard',
+    title: "Image Editor",
+    description:
+      "An analytics dashboard for monitoring social media performance across platforms.",
+    image: imageEditor,
+    tags: ["HTML", "CSS", "Javascript", "Image Manipulation"],
+    demoUrl: "https://image-modifier.netlify.app/",
+    codeUrl: "https://github.com/prathameshpatil455/image-editor",
   },
 ];
 
 const initialState: ProjectState = {
   projects,
   filteredProjects: projects,
-  activeFilter: 'All',
+  activeFilter: "All",
 };
 
 const projectSlice = createSlice({
-  name: 'projects',
+  name: "projects",
   initialState,
   reducers: {
     filterProjects: (state, action: PayloadAction<string>) => {
       const filter = action.payload;
       state.activeFilter = filter;
-      
-      if (filter === 'All') {
+
+      if (filter === "All") {
         state.filteredProjects = state.projects;
       } else {
-        state.filteredProjects = state.projects.filter(project => 
-          project.tags.some(tag => tag.toLowerCase().includes(filter.toLowerCase()))
+        state.filteredProjects = state.projects.filter((project) =>
+          project.tags.some((tag) =>
+            tag.toLowerCase().includes(filter.toLowerCase())
+          )
         );
       }
     },

@@ -76,21 +76,23 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         </div>
 
         <div className="flex items-center gap-4">
-          <motion.a
-            href={project.demoUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className={`flex items-center gap-2 px-4 py-2 rounded-md transition-colors ${
-              isDarkMode
-                ? "bg-primary hover:bg-primary-600 text-white"
-                : "bg-primary hover:bg-primary-600 text-white"
-            }`}
-          >
-            <span className="text-sm font-medium">Live Demo</span>
-            <ExternalLink className="w-4 h-4" />
-          </motion.a>
+          {project.demoUrl && (
+            <motion.a
+              href={project.demoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className={`flex items-center gap-2 px-4 py-2 rounded-md transition-colors ${
+                isDarkMode
+                  ? "bg-primary hover:bg-primary-600 text-white"
+                  : "bg-primary hover:bg-primary-600 text-white"
+              }`}
+            >
+              <span className="text-sm font-medium">Live Demo</span>
+              <ExternalLink className="w-4 h-4" />
+            </motion.a>
+          )}
 
           <motion.a
             href={project.codeUrl}

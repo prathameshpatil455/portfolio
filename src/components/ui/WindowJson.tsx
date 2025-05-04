@@ -39,7 +39,7 @@ const WindowJson = () => {
                 isDarkMode ? "text-secondary-400" : "text-secondary-600"
               }
             >
-              developer
+              Portfolio
             </span>{" "}
             = {"{"}
             <br />
