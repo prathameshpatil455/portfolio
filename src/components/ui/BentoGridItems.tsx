@@ -12,6 +12,7 @@ import {
 import { useSelector } from "react-redux";
 import { SiReact, SiTailwindcss, SiAppwrite, SiRedux } from "react-icons/si";
 import { FaMobileScreen } from "react-icons/fa6";
+import HeroImage from "../../../public/images/HeroImage.png";
 
 export const InfoCard = () => {
   const { isDarkMode } = useSelector(
@@ -345,7 +346,7 @@ export const ImageCard = () => {
     >
       <div className="absolute inset-0 bg-gradient-to-b from-black/0 to-black/80 z-10"></div>
       <img
-        src={ProfilePic}
+        src={HeroImage}
         alt="Developer workspace"
         className="w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-110"
       />

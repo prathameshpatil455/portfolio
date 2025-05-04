@@ -27,7 +27,7 @@ const projects: Project[] = [
     id: 1,
     title: "Image Stegnography",
     description:
-      "A full-featured e-commerce platform built with React, Node.js, and MongoDB.",
+      "A React app to securely hide and extract secret messages within images using steganography.",
     image: imageStegnography,
     tags: [
       "React",
@@ -41,9 +41,9 @@ const projects: Project[] = [
   },
   {
     id: 2,
-    title: "Pokedex collection",
+    title: "Pokedex Collection",
     description:
-      "A Kanban-style task management application with drag-and-drop functionality.",
+      "An interactive Pokédex built with React and PokeAPI to explore Pokémon data and stats.",
     image: pokdexCollection,
     tags: ["React", "TypeScript", "Firebase", "Tailwind CSS", "Poke Api"],
     demoUrl: "https://pokedex-collection.netlify.app/",
@@ -53,17 +53,16 @@ const projects: Project[] = [
     id: 3,
     title: "2048 Game",
     description:
-      "Real-time weather dashboard with global forecasts and interactive maps.",
+      "A mobile 2048 puzzle game built with React Native and Redux for smooth gameplay.",
     image: Game2048,
     tags: ["React-Native", "Redux", "Native-wind"],
-    // demoUrl: "https://weather-dashboard.com",
     codeUrl: "https://github.com/prathameshpatil455/0248",
   },
   {
     id: 4,
     title: "Image Editor",
     description:
-      "An analytics dashboard for monitoring social media performance across platforms.",
+      "A web image editor that allows cropping, filtering, and adjusting images in the browser.",
     image: imageEditor,
     tags: ["HTML", "CSS", "Javascript", "Image Manipulation"],
     demoUrl: "https://image-modifier.netlify.app/",
@@ -71,9 +70,9 @@ const projects: Project[] = [
   },
   {
     id: 5,
-    title: "Rice leaf disease detection",
+    title: "Rice Leaf Disease Detection",
     description:
-      "An analytics dashboard for monitoring social media performance across platforms.",
+      "A CNN-based model to detect rice leaf diseases from plant images using deep learning.",
     image: riceLeafDetection,
     tags: ["Deep Learning", "Machine Learning", "CNN"],
     codeUrl:
@@ -83,7 +82,7 @@ const projects: Project[] = [
     id: 6,
     title: "Traffic Sign Recognition Model",
     description:
-      "An analytics dashboard for monitoring social media performance across platforms.",
+      "A deep learning model to identify traffic signs using image classification with CNNs.",
     image: trafficSignRecognition,
     tags: ["Deep Learning", "Machine Learning", "CNN", "Pre-Processing"],
     codeUrl:
