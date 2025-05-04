@@ -3,6 +3,8 @@ import imageStegnography from "../../../public/images/portfolio/imageStegnograph
 import pokdexCollection from "../../../public/images/portfolio/pokdexCollection.png";
 import Game2048 from "../../../public/images/portfolio/2048Game.png";
 import imageEditor from "../../../public/images/portfolio/imageEditor.png";
+import trafficSignRecognition from "../../../public/images/portfolio/trafficSignRecognition.jpg";
+import riceLeafDetection from "../../../public/images/portfolio/riceLeafDetection.png";
 
 export interface Project {
   id: number;
@@ -66,6 +68,26 @@ const projects: Project[] = [
     tags: ["HTML", "CSS", "Javascript", "Image Manipulation"],
     demoUrl: "https://image-modifier.netlify.app/",
     codeUrl: "https://github.com/prathameshpatil455/image-editor",
+  },
+  {
+    id: 5,
+    title: "Rice leaf disease detection",
+    description:
+      "An analytics dashboard for monitoring social media performance across platforms.",
+    image: riceLeafDetection,
+    tags: ["Deep Learning", "Machine Learning", "CNN"],
+    codeUrl:
+      "https://github.com/prathameshpatil455/Rice-leaf-disease-detection",
+  },
+  {
+    id: 6,
+    title: "Traffic Sign Recognition Model",
+    description:
+      "An analytics dashboard for monitoring social media performance across platforms.",
+    image: trafficSignRecognition,
+    tags: ["Deep Learning", "Machine Learning", "CNN", "Pre-Processing"],
+    codeUrl:
+      "https://github.com/prathameshpatil455/Traffic-Sign-Recognition-Mode",
   },
 ];
 
