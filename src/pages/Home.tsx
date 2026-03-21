@@ -10,7 +10,7 @@ import { useResumePreview } from "../contexts/ResumePreviewContext";
 
 const Home = () => {
   const { isDarkMode } = useSelector(
-    (state: { theme: { isDarkMode: boolean } }) => state.theme
+    (state: { theme: { isDarkMode: boolean } }) => state.theme,
   );
   const { openResumePreview } = useResumePreview();
 

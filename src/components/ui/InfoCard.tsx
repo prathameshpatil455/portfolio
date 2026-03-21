@@ -4,7 +4,7 @@ import SplineComponent from "./SplineComponent";
 
 const InfoCard = () => {
   const { isDarkMode } = useSelector(
-    (state: { theme: { isDarkMode: boolean } }) => state.theme
+    (state: { theme: { isDarkMode: boolean } }) => state.theme,
   );
 
   return (

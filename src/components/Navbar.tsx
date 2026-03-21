@@ -31,7 +31,7 @@ const Navbar = () => {
   const location = useLocation();
   const { openResumePreview } = useResumePreview();
   const { isDarkMode } = useSelector(
-    (state: { theme: { isDarkMode: boolean } }) => state.theme
+    (state: { theme: { isDarkMode: boolean } }) => state.theme,
   );
 
   const { scrollYProgress } = useScroll();
@@ -56,9 +56,7 @@ const Navbar = () => {
     }
   });
 
-  const { activeSection } = useSelector(
-    (state: RootState) => state.ui
-  );
+  const { activeSection } = useSelector((state: RootState) => state.ui);
   const [isScrolled, setIsScrolled] = useState(false);
 
   const handleToggleTheme = useCallback(() => {

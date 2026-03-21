@@ -20,7 +20,7 @@ interface SocialLink {
 
 const SocialLinks = () => {
   const isDarkMode = useSelector(
-    (state: { theme: { isDarkMode: boolean } }) => state.theme.isDarkMode
+    (state: { theme: { isDarkMode: boolean } }) => state.theme.isDarkMode,
   );
   const { openResumePreview } = useResumePreview();
 

@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 
 import TechnologiesProvider from "../components/ui/TechnologiesProvider";
 
-
 type Category = "frontend" | "backend" | "developer_tools" | "data_analysis";
 
 // Categorize the skills
@@ -53,7 +52,7 @@ const Experience = () => {
   const [selectedCategory, setSelectedCategory] =
     useState<Category>("frontend");
   const { isDarkMode } = useSelector(
-    (state: { theme: { isDarkMode: boolean } }) => state.theme
+    (state: { theme: { isDarkMode: boolean } }) => state.theme,
   );
 
   const containerVariants = {
@@ -214,7 +213,7 @@ const Experience = () => {
                     >
                       <TechnologiesProvider skillName={skill} index={index} />
                     </motion.div>
-                  )
+                  ),
                 )}
               </div>
             </motion.div>

@@ -4,7 +4,7 @@ import { InfoCard, ImageCard, AboutMe } from "./BentoGridItems";
 
 const BentoGrid = () => {
   const { isDarkMode } = useSelector(
-    (state: { theme: { isDarkMode: boolean } }) => state.theme
+    (state: { theme: { isDarkMode: boolean } }) => state.theme,
   );
 
   return (

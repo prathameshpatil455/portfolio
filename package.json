@@ -12,8 +12,8 @@
     "type-check": "tsc --noEmit",
     "lint:strict": "eslint src --max-warnings 0",
     "lint:fix": "eslint src --fix",
-    "format:check": "prettier --check src/**/*.{ts,tsx,js,jsx,json,css,md}",
-    "format:fix": "prettier --write src/**/*.{ts,tsx,js,jsx,json,css,md}",
+    "format:check": "prettier --check src",
+    "format:fix": "prettier --write src",
     "check-unused": "knip --include files,dependencies --no-config-hints",
     "bundle-size": "npx vite-bundle-analyzer",
     "clean": "pnpm run lint:fix && pnpm run format:fix"

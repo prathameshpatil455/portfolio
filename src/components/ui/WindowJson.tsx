@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 
 const WindowJson = () => {
   const { isDarkMode } = useSelector(
-    (state: { theme: { isDarkMode: boolean } }) => state.theme
+    (state: { theme: { isDarkMode: boolean } }) => state.theme,
   );
 
   return (

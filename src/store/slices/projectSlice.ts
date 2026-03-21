@@ -29,7 +29,7 @@ const projectSlice = createSlice({
       } else {
         const q = filter.toLowerCase();
         state.filteredProjects = state.projects.filter((project) =>
-          project.tags.some((tag) => tag.toLowerCase().includes(q))
+          project.tags.some((tag) => tag.toLowerCase().includes(q)),
         );
       }
     },

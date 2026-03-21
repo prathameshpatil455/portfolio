@@ -81,7 +81,7 @@ const TechnologiesProvider = ({ skillName, index }: Props) => {
   });
 
   const { isDarkMode } = useSelector(
-    (state: { theme: { isDarkMode: boolean } }) => state.theme
+    (state: { theme: { isDarkMode: boolean } }) => state.theme,
   );
 
   const imageVariants = {

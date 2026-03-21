@@ -84,7 +84,7 @@ const ResumePreviewModal = ({
         />
       </div>
     </div>,
-    document.body
+    document.body,
   );
 };
 

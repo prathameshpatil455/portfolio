@@ -20,7 +20,7 @@ interface FormValues {
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { isDarkMode } = useSelector(
-    (state: { theme: { isDarkMode: boolean } }) => state.theme
+    (state: { theme: { isDarkMode: boolean } }) => state.theme,
   );
 
   const validationSchema = Yup.object().shape({
@@ -46,7 +46,7 @@ const Contact = () => {
       try {
         await axios.post(
           "https://getform.io/f/b18a1b39-925e-4141-9298-d851a2913cc3",
-          values
+          values,
         );
 
         toast.success("The message has been sent successfully!");
@@ -54,7 +54,7 @@ const Contact = () => {
       } catch (error) {
         console.error(error);
         toast.error(
-          "An error occurred while submitting the form. Please try again later."
+          "An error occurred while submitting the form. Please try again later.",
         );
       } finally {
         setIsSubmitting(false);

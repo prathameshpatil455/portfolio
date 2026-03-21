@@ -4,7 +4,7 @@ import BentoGrid from "../components/ui/BentoGrid";
 
 const About = () => {
   const { isDarkMode } = useSelector(
-    (state: { theme: { isDarkMode: boolean } }) => state.theme
+    (state: { theme: { isDarkMode: boolean } }) => state.theme,
   );
 
   return (

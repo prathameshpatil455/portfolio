@@ -14,7 +14,7 @@ const siteBaseUrl = () =>
 const ProjectDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const { isDarkMode } = useSelector(
-    (state: { theme: { isDarkMode: boolean } }) => state.theme
+    (state: { theme: { isDarkMode: boolean } }) => state.theme,
   );
 
   const project = slug ? getProjectBySlug(slug) : undefined;
@@ -29,7 +29,7 @@ const ProjectDetail = () => {
 
   const pageUrl = useMemo(
     () => `${siteBaseUrl()}${canonicalPath}`,
-    [canonicalPath]
+    [canonicalPath],
   );
 
   const jsonLd = useMemo(() => {

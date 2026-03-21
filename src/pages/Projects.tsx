@@ -10,10 +10,10 @@ import { filterProjects } from "../store/slices/projectSlice";
 const Projects = () => {
   const dispatch = useDispatch();
   const { filteredProjects, activeFilter } = useSelector(
-    (state: RootState) => state.projects
+    (state: RootState) => state.projects,
   );
   const { isDarkMode } = useSelector(
-    (state: { theme: { isDarkMode: boolean } }) => state.theme
+    (state: { theme: { isDarkMode: boolean } }) => state.theme,
   );
   const filters = useMemo(() => getProjectFilterOptions(), []);
 

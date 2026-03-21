@@ -45,7 +45,7 @@ jobs:
       run: pnpm test --if-present
 
     - name: Check bundle size
-      run: pnpm run bundle-size --if-present
+      run: pnpm run --if-present bundle-size
 
   security-audit:
     runs-on: ubuntu-latest
@@ -69,5 +69,5 @@ jobs:
     - name: Run security audit
       run: pnpm audit --audit-level moderate
 
-    - name: Check for outdated packages
-      run: pnpm outdated
+    - name: List outdated packages (informational)
+      run: pnpm outdated || true

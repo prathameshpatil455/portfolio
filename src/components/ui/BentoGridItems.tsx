@@ -16,7 +16,7 @@ const HERO_IMAGE_URL = "/images/HeroImage.png";
 
 export const InfoCard = () => {
   const { isDarkMode } = useSelector(
-    (state: { theme: { isDarkMode: boolean } }) => state.theme
+    (state: { theme: { isDarkMode: boolean } }) => state.theme,
   );
 
   return (
@@ -118,7 +118,7 @@ export const InfoCard = () => {
 
 export const TechStack = () => {
   const { isDarkMode } = useSelector(
-    (state: { theme: { isDarkMode: boolean } }) => state.theme
+    (state: { theme: { isDarkMode: boolean } }) => state.theme,
   );
 
   const techStack = [
@@ -244,7 +244,7 @@ export const WorkGallery = () => {
 
 export const Experience = () => {
   const { isDarkMode } = useSelector(
-    (state: { theme: { isDarkMode: boolean } }) => state.theme
+    (state: { theme: { isDarkMode: boolean } }) => state.theme,
   );
 
   return (
@@ -312,7 +312,7 @@ export const Experience = () => {
 
 export const ImageCard = () => {
   const { isDarkMode } = useSelector(
-    (state: { theme: { isDarkMode: boolean } }) => state.theme
+    (state: { theme: { isDarkMode: boolean } }) => state.theme,
   );
 
   return (
@@ -333,7 +333,7 @@ export const ImageCard = () => {
 
 export const AboutMe = () => {
   const { isDarkMode } = useSelector(
-    (state: { theme: { isDarkMode: boolean } }) => state.theme
+    (state: { theme: { isDarkMode: boolean } }) => state.theme,
   );
 
   return (
