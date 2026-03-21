@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+
 import BentoGrid from "../components/ui/BentoGrid";
 
 const About = () => {

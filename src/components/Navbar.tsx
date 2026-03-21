@@ -1,19 +1,20 @@
-import { useState, useEffect, useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useLocation } from "react-router-dom";
-import { FileText } from "lucide-react";
-import { FaBars, FaMoon, FaTimes } from "react-icons/fa";
-import { CiLight } from "react-icons/ci";
 import {
   motion,
   useScroll,
   useMotionValueEvent,
   AnimatePresence,
 } from "framer-motion";
-import { closeMenu } from "../store/slices/uiSlice";
+import { FileText } from "lucide-react";
+import { useState, useEffect, useCallback } from "react";
+import { CiLight } from "react-icons/ci";
+import { FaBars, FaMoon, FaTimes } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useLocation } from "react-router-dom";
+
+import { useResumePreview } from "../contexts/ResumePreviewContext";
 import { RootState } from "../store";
 import { toggleTheme } from "../store/slices/themeSlice";
-import { useResumePreview } from "../contexts/ResumePreviewContext";
+import { closeMenu } from "../store/slices/uiSlice";
 
 const navLinks = [
   { id: "home", label: "Home" },

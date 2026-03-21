@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import { useSelector } from "react-redux";
+import { IconType } from "react-icons";
+import { FaJava, FaChartLine, FaCode } from "react-icons/fa";
 import {
   SiHtml5,
   SiCss3,
@@ -28,8 +28,8 @@ import {
   SiGithub,
   SiPostgresql,
 } from "react-icons/si";
-import { FaJava, FaChartLine, FaCode } from "react-icons/fa";
-import { IconType } from "react-icons";
+import { useInView } from "react-intersection-observer";
+import { useSelector } from "react-redux";
 
 interface Props {
   skillName: string;

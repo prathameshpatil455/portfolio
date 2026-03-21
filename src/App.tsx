@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Routes, Route, useLocation } from "react-router-dom";
+
 import Layout from "./components/Layout";
 import HomePage from "./pages/HomePage";
 import ProjectDetail from "./pages/ProjectDetail";

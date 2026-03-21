@@ -7,9 +7,9 @@ import {
   FaClock,
   FaBriefcase,
 } from "react-icons/fa";
-import { useSelector } from "react-redux";
-import { SiReact, SiTailwindcss, SiAppwrite, SiRedux } from "react-icons/si";
 import { FaMobileScreen } from "react-icons/fa6";
+import { SiReact, SiTailwindcss, SiAppwrite, SiRedux } from "react-icons/si";
+import { useSelector } from "react-redux";
 
 const PROFILE_PIC_URL = "/images/profile.jpg";
 const HERO_IMAGE_URL = "/images/HeroImage.png";

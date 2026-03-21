@@ -1,9 +1,10 @@
-import { useMemo } from "react";
-import { Link, Navigate, useParams } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { ArrowLeft, ExternalLink } from "lucide-react";
+import { useMemo } from "react";
+import { Helmet } from "react-helmet-async";
 import { useSelector } from "react-redux";
+import { Link, Navigate, useParams } from "react-router-dom";
+
 import { getProjectBySlug } from "../data/projects";
 
 const siteBaseUrl = () =>

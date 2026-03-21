@@ -14,7 +14,7 @@
     "lint:fix": "eslint src --fix",
     "format:check": "prettier --check src/**/*.{ts,tsx,js,jsx,json,css,md}",
     "format:fix": "prettier --write src/**/*.{ts,tsx,js,jsx,json,css,md}",
-    "check-unused": "npx unimported",
+    "check-unused": "knip --include files,dependencies --no-config-hints",
     "bundle-size": "npx vite-bundle-analyzer",
     "clean": "pnpm run lint:fix && pnpm run format:fix"
   },
@@ -33,7 +33,7 @@
     "@mui/material": "^7.0.2",
     "@reduxjs/toolkit": "^2.2.1",
     "@splinetool/react-spline": "^4.0.0",
-    "axios": "^1.9.0",
+    "axios": "^1.13.6",
     "formik": "^2.4.6",
     "framer-motion": "^11.0.5",
     "lucide-react": "^0.344.0",
@@ -51,11 +51,11 @@
     "@eslint/js": "^9.9.1",
     "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
-    "@typescript-eslint/eslint-plugin": "^8.3.0",
-    "@typescript-eslint/parser": "^8.3.0",
-    "@vitejs/plugin-react": "^4.3.1",
+    "@typescript-eslint/eslint-plugin": "^8.57.1",
+    "@typescript-eslint/parser": "^8.57.1",
+    "@vitejs/plugin-react": "^4.7.0",
     "autoprefixer": "^10.4.18",
-    "eslint": "^9.9.1",
+    "eslint": "^9.39.4",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react": "^7.37.5",
@@ -67,11 +67,24 @@
     "lint-staged": "^16.1.5",
     "postcss": "^8.4.35",
     "prettier": "^3.6.2",
-    "tailwindcss": "^3.4.1",
+    "tailwindcss": "^3.4.19",
     "typescript": "^5.5.3",
-    "typescript-eslint": "^8.3.0",
-    "unimported": "^1.31.1",
-    "vite": "^5.4.2",
+    "typescript-eslint": "^8.57.1",
+    "knip": "^5.70.0",
+    "vite": "^5.4.21",
     "vite-bundle-analyzer": "^1.2.1"
+  },
+  "pnpm": {
+    "overrides": {
+      "glob": ">=10.5.0",
+      "rollup": ">=4.59.0",
+      "esbuild": ">=0.25.0",
+      "lodash": ">=4.17.23",
+      "lodash-es": ">=4.17.23",
+      "minimatch": ">=9.0.7",
+      "flatted": ">=3.4.2",
+      "js-yaml": ">=4.1.1",
+      "ajv": ">=6.14.0"
+    }
   }
 }

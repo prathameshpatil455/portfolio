@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
 import { PROJECTS, type Project } from "../../data/projects";
 
 export type { Project } from "../../data/projects";

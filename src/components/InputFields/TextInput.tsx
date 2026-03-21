@@ -1,7 +1,5 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
-import { useState, ChangeEvent, KeyboardEvent, WheelEvent } from "react";
 import { TextField } from "@mui/material";
+import { useState, ChangeEvent, KeyboardEvent, WheelEvent } from "react";
 
 interface TextInputProps {
   label: string;

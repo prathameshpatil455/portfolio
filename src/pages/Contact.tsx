@@ -1,12 +1,13 @@
-import { useState, type FormEvent } from "react";
-import { useFormik } from "formik";
-import * as Yup from "yup";
 import axios from "axios";
-import { toast } from "react-toastify";
+import { useFormik } from "formik";
 import { motion } from "framer-motion";
-import TextInput from "../components/InputFields/TextInput";
-import TextAreaInput from "../components/InputFields/TextAreaInput";
+import { useState, type FormEvent } from "react";
 import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import * as Yup from "yup";
+
+import TextAreaInput from "../components/InputFields/TextAreaInput";
+import TextInput from "../components/InputFields/TextInput";
 import InfoCard from "../components/ui/InfoCard";
 
 interface FormValues {

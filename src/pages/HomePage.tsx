@@ -1,9 +1,10 @@
 import { Helmet } from "react-helmet-async";
-import Home from "./Home";
+
 import About from "./About";
-import Experience from "./Experience";
-import Projects from "./Projects";
 import Contact from "./Contact";
+import Experience from "./Experience";
+import Home from "./Home";
+import Projects from "./Projects";
 
 const HomePage = () => (
   <>

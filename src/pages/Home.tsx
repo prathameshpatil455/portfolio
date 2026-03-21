@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
-import { MdOutlineKeyboardArrowRight } from "react-icons/md";
-import { FaMapMarkerAlt } from "react-icons/fa";
 import { FileText } from "lucide-react";
+import { FaMapMarkerAlt } from "react-icons/fa";
+import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { useSelector } from "react-redux";
+
 import ScrollDown from "../components/ui/ScrollDown";
 import WindowJson from "../components/ui/WindowJson";
 import { useResumePreview } from "../contexts/ResumePreviewContext";

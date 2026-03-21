@@ -1,8 +1,10 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { Code, Server, Laptop, Brain } from "lucide-react";
-import TechnologiesProvider from "../components/ui/TechnologiesProvider";
+import { useState } from "react";
 import { useSelector } from "react-redux";
+
+import TechnologiesProvider from "../components/ui/TechnologiesProvider";
+
 
 type Category = "frontend" | "backend" | "developer_tools" | "data_analysis";
 

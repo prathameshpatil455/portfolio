@@ -1,5 +1,6 @@
-import { InfoCard, ImageCard, AboutMe } from "./BentoGridItems";
 import { useSelector } from "react-redux";
+
+import { InfoCard, ImageCard, AboutMe } from "./BentoGridItems";
 
 const BentoGrid = () => {
   const { isDarkMode } = useSelector(

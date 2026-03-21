@@ -1,10 +1,11 @@
+import { motion } from "framer-motion";
 import { useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { motion } from "framer-motion";
-import { RootState } from "../store";
-import { filterProjects } from "../store/slices/projectSlice";
+
 import ProjectCard from "../components/ui/ProjectCard";
 import { getProjectFilterOptions } from "../data/projects";
+import { RootState } from "../store";
+import { filterProjects } from "../store/slices/projectSlice";
 
 const Projects = () => {
   const dispatch = useDispatch();

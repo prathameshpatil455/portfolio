@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 const CustomCursor: React.FC = () => {

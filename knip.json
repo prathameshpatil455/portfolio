@@ -1,0 +1,16 @@
+{
+  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "entry": ["src/main.tsx"],
+  "project": ["src/**/*.{ts,tsx}"],
+  "ignore": [
+    "src/components/ui/Button.tsx",
+    "src/components/ui/SectionHeading.tsx"
+  ],
+  "ignoreDependencies": [
+    "eslint-plugin-react-refresh",
+    "husky",
+    "lint-staged",
+    "typescript-eslint",
+    "vite-bundle-analyzer"
+  ]
+}

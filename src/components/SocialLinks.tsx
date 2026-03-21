@@ -1,11 +1,13 @@
+import { motion } from "framer-motion";
 import React from "react";
+import { BsFillPersonLinesFill } from "react-icons/bs";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
-import { BsFillPersonLinesFill } from "react-icons/bs";
-import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
-import { RESUME_PDF_URL } from "./ResumePreviewModal";
+
 import { useResumePreview } from "../contexts/ResumePreviewContext";
+
+import { RESUME_PDF_URL } from "./ResumePreviewModal";
 
 interface SocialLink {
   id: number;

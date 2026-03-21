@@ -1,8 +1,9 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
+import React from "react";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+
 import type { Project } from "../../store/slices/projectSlice";
 
 interface ProjectCardProps {

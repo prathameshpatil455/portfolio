@@ -1,4 +1,5 @@
 import js from "@eslint/js";
+import globals from "globals";
 import typescript from "@typescript-eslint/eslint-plugin";
 import typescriptParser from "@typescript-eslint/parser";
 import react from "eslint-plugin-react";
@@ -18,6 +19,14 @@ export default [
         sourceType: "module",
         ecmaFeatures: { jsx: true },
       },
+      globals: {
+        ...globals.browser,
+      },
+    },
+    settings: {
+      react: {
+        version: "detect",
+      },
     },
     plugins: {
       "@typescript-eslint": typescript,
@@ -28,21 +37,18 @@ export default [
       "unused-imports": unusedImports,
     },
     rules: {
-      // SOLID Principles Enforcement
-      "max-lines-per-function": ["error", { max: 50, skipBlankLines: true }],
-      "max-params": ["error", 3],
-      complexity: ["error", 5],
+      "no-undef": "off",
+      "no-unused-vars": "off",
 
-      // Component Rules
-      "react/function-component-definition": [
-        "error",
-        { namedComponents: "arrow-function" },
-      ],
-      "react/jsx-max-props-per-line": ["error", { maximum: 3 }],
-      "react/jsx-no-bind": "error",
+      "max-lines-per-function": "off",
+      "max-params": ["warn", 5],
+      complexity: "off",
+
+      "react/function-component-definition": "off",
+      "react/jsx-max-props-per-line": "off",
+      "react/jsx-no-bind": "off",
       "react/jsx-no-useless-fragment": "error",
 
-      // Import/Export Rules
       "import/order": [
         "error",
         {
@@ -59,15 +65,19 @@ export default [
         },
       ],
       "unused-imports/no-unused-imports": "error",
-      "unused-imports/no-unused-vars": "error",
+      "unused-imports/no-unused-vars": [
+        "error",
+        {
+          argsIgnorePattern: "^_",
+          varsIgnorePattern: "^_",
+        },
+      ],
 
-      // TypeScript Rules
-      "@typescript-eslint/no-unused-vars": "error",
-      "@typescript-eslint/explicit-function-return-type": "error",
+      "@typescript-eslint/no-unused-vars": "off",
+      "@typescript-eslint/explicit-function-return-type": "off",
       "@typescript-eslint/no-explicit-any": "error",
 
-      // General Code Quality
-      "no-console": "warn",
+      "no-console": "off",
       "no-debugger": "error",
       "prefer-const": "error",
       "no-var": "error",

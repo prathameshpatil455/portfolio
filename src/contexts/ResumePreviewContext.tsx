@@ -7,6 +7,7 @@ import {
   type ReactNode,
 } from "react";
 import { useSelector } from "react-redux";
+
 import ResumePreviewModal from "../components/ResumePreviewModal";
 
 type ResumePreviewContextValue = {
