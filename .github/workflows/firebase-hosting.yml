@@ -3,6 +3,7 @@ name: Deploy to Firebase Hosting
 on:
   push:
     branches:
+      - main
       - master
 
 jobs:
@@ -19,7 +20,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
           cache: 'pnpm'
 
       - name: Install dependencies
@@ -35,5 +36,10 @@ jobs:
             exit 1
           fi
 
+      - name: Install Firebase CLI
+        run: curl -sL https://firebase.tools | bash
+
       - name: Deploy to Firebase Hosting
-        run: pnpm dlx firebase-tools deploy --only hosting --token "${{ secrets.FIREBASE_TOKEN }}"
+        run: |
+          export PATH="$HOME/.local/bin:$PATH"
+          firebase deploy --only hosting --token "${{ secrets.FIREBASE_TOKEN }}"
