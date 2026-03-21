@@ -1,6 +1,4 @@
-import React, { useEffect, useRef } from "react";
-import { IoMdCloudDownload } from "react-icons/io";
-import ProfilePic from "../../../public/images/profile.jpg";
+import { useEffect, useRef } from "react";
 import {
   FaGlobeAsia,
   FaLanguage,
@@ -12,7 +10,9 @@ import {
 import { useSelector } from "react-redux";
 import { SiReact, SiTailwindcss, SiAppwrite, SiRedux } from "react-icons/si";
 import { FaMobileScreen } from "react-icons/fa6";
-import HeroImage from "../../../public/images/HeroImage.png";
+
+const PROFILE_PIC_URL = "/images/profile.jpg";
+const HERO_IMAGE_URL = "/images/HeroImage.png";
 
 export const InfoCard = () => {
   const { isDarkMode } = useSelector(
@@ -35,14 +35,6 @@ export const InfoCard = () => {
       `}
     >
       <div className="flex gap-4 items-center justify-start w-full">
-        {/* <img
-          src={ProfilePic}
-          alt="Profile"
-          className={`w-24 h-24 rounded-md object-cover border-4 ${
-            isDarkMode ? "border-[#232323]" : "border-gray-200"
-          }`}
-        /> */}
-
         <div className="flex w-full gap-2">
           <div className="w-full h-full flex flex-col gap-2 items-start">
             <h2
@@ -61,18 +53,6 @@ export const InfoCard = () => {
               <span className="text-purple-600">Software Developer</span>
             </p>
           </div>
-
-          {/* <div className="flex items-start justify-end mb-2">
-            <button
-              className={`${
-                isDarkMode
-                  ? "text-white hover:text-gray-300"
-                  : "text-gray-900 hover:text-gray-600"
-              } flex items-center gap-1 text-xs`}
-            >
-              Resume <IoMdCloudDownload size={18} />
-            </button>
-          </div> */}
         </div>
       </div>
 
@@ -204,9 +184,6 @@ export const TechStack = () => {
 };
 
 export const WorkGallery = () => {
-  const { isDarkMode } = useSelector(
-    (state: { theme: { isDarkMode: boolean } }) => state.theme
-  );
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -242,17 +219,17 @@ export const WorkGallery = () => {
         className="flex gap-4 w-full py-2 mb-1 overflow-x-auto no-scrollbar"
       >
         <img
-          src={ProfilePic}
+          src={PROFILE_PIC_URL}
           alt="Project 1"
           className="w-36 h-24 object-cover rounded-2xl flex-shrink-0"
         />
         <img
-          src={ProfilePic}
+          src={PROFILE_PIC_URL}
           alt="Project 2"
           className="w-36 h-24 object-cover rounded-2xl flex-shrink-0"
         />
         <img
-          src={ProfilePic}
+          src={PROFILE_PIC_URL}
           alt="Project 3"
           className="w-36 h-24 object-cover rounded-2xl flex-shrink-0"
         />
@@ -346,7 +323,7 @@ export const ImageCard = () => {
     >
       <div className="absolute inset-0 bg-gradient-to-b from-black/0 to-black/80 z-10"></div>
       <img
-        src={HeroImage}
+        src={HERO_IMAGE_URL}
         alt="Developer workspace"
         className="w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-110"
       />

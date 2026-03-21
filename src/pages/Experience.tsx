@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Code, Server, Laptop, Brain } from "lucide-react";
 import TechnologiesProvider from "../components/ui/TechnologiesProvider";
@@ -53,10 +53,6 @@ const Experience = () => {
   const { isDarkMode } = useSelector(
     (state: { theme: { isDarkMode: boolean } }) => state.theme
   );
-
-  useEffect(() => {
-    document.title = "Portfolio | Experience";
-  }, []);
 
   const containerVariants = {
     hidden: { opacity: 0 },

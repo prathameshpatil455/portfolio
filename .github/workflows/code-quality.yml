@@ -9,59 +9,69 @@ on:
 jobs:
   validate-and-build:
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-      
+
+    - name: Install pnpm
+      uses: pnpm/action-setup@v4
+      with:
+        version: 9
+
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
         node-version: '18'
-        cache: 'npm'
-        
+        cache: 'pnpm'
+
     - name: Install dependencies
-      run: npm ci
-      
+      run: pnpm install --frozen-lockfile
+
     - name: Run TypeScript type checking
-      run: npm run type-check
-      
+      run: pnpm run type-check
+
     - name: Run ESLint with strict rules
-      run: npm run lint:strict
-      
+      run: pnpm run lint:strict
+
     - name: Check for unused dependencies
-      run: npm run check-unused
-      
+      run: pnpm run check-unused
+
     - name: Run Prettier check
-      run: npm run format:check
-      
+      run: pnpm run format:check
+
     - name: Build project
-      run: npm run build
-      
+      run: pnpm run build
+
     - name: Run tests (if available)
-      run: npm test --if-present
-      
+      run: pnpm test --if-present
+
     - name: Check bundle size
-      run: npm run bundle-size --if-present
+      run: pnpm run bundle-size --if-present
 
   security-audit:
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-      
+
+    - name: Install pnpm
+      uses: pnpm/action-setup@v4
+      with:
+        version: 9
+
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
         node-version: '18'
-        cache: 'npm'
-        
+        cache: 'pnpm'
+
     - name: Install dependencies
-      run: npm ci
-      
+      run: pnpm install --frozen-lockfile
+
     - name: Run security audit
-      run: npm audit --audit-level=moderate
-      
+      run: pnpm audit --audit-level moderate
+
     - name: Check for outdated packages
-      run: npm outdated
+      run: pnpm outdated

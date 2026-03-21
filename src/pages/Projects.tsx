@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { motion } from "framer-motion";
 import { RootState } from "../store";
 import { filterProjects } from "../store/slices/projectSlice";
-import SectionHeading from "../components/ui/SectionHeading";
 import ProjectCard from "../components/ui/ProjectCard";
+import { getProjectFilterOptions } from "../data/projects";
 
 const Projects = () => {
   const dispatch = useDispatch();
@@ -14,18 +14,7 @@ const Projects = () => {
   const { isDarkMode } = useSelector(
     (state: { theme: { isDarkMode: boolean } }) => state.theme
   );
-  const [filters] = useState([
-    "All",
-    "React",
-    "Node.js",
-    "TypeScript",
-    "MongoDB",
-    "Redux",
-  ]);
-
-  useEffect(() => {
-    document.title = "Portfolio | Projects";
-  }, []);
+  const filters = useMemo(() => getProjectFilterOptions(), []);
 
   const handleFilterChange = (filter: string) => {
     dispatch(filterProjects(filter));

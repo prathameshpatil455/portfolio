@@ -1,23 +1,12 @@
-import { useEffect, useState } from "react";
+import { useState, type FormEvent } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import TextInput from "../components/InputFields/TextInput";
 import TextAreaInput from "../components/InputFields/TextAreaInput";
 import { useSelector } from "react-redux";
-import {
-  Send,
-  Mail,
-  MapPin,
-  Phone,
-  Linkedin,
-  Github,
-  Twitter,
-} from "lucide-react";
-import SectionHeading from "../components/ui/SectionHeading";
-import Button from "../components/ui/Button";
 import InfoCard from "../components/ui/InfoCard";
 
 interface FormValues {
@@ -28,10 +17,7 @@ interface FormValues {
 }
 
 const Contact = () => {
-  const [showModal, setShowModal] = useState(false);
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
   const { isDarkMode } = useSelector(
     (state: { theme: { isDarkMode: boolean } }) => state.theme
   );
@@ -77,7 +63,7 @@ const Contact = () => {
     validateOnChange: false,
   });
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     formik.validateForm().then((errors) => {
@@ -92,10 +78,6 @@ const Contact = () => {
       }
     });
   };
-
-  useEffect(() => {
-    document.title = "Portfolio | Contact";
-  }, []);
 
   return (
     <section id="contact">
@@ -178,7 +160,7 @@ const Contact = () => {
                 className={`w-full bg-blue-500 text-white p-3 rounded-md hover:bg-blue-600 ${
                   isSubmitting ? "opacity-50 cursor-not-allowed" : ""
                 }`}
-                disabled={isSubmitting} // Disable when submitting
+                disabled={isSubmitting}
               >
                 {isSubmitting ? "Submitting..." : "Let's talk"}
               </button>
@@ -186,8 +168,6 @@ const Contact = () => {
           </div>
         </div>
       </div>
-
-      {/* <Footer /> */}
     </section>
   );
 };

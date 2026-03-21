@@ -1,17 +1,18 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Layout from "./components/Layout";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Experience from "./pages/Experience";
-import Projects from "./pages/Projects";
-import Contact from "./pages/Contact";
+import HomePage from "./pages/HomePage";
+import ProjectDetail from "./pages/ProjectDetail";
 import { setActiveSection } from "./store/slices/uiSlice";
 
-function App() {
+function ScrollSpy() {
   const dispatch = useDispatch();
+  const { pathname } = useLocation();
 
   useEffect(() => {
+    if (pathname !== "/") return;
+
     const handleScroll = () => {
       const sections = document.querySelectorAll("section[id]");
       const scrollPosition = window.scrollY + window.innerHeight / 2;
@@ -31,16 +32,21 @@ function App() {
     };
 
     window.addEventListener("scroll", handleScroll);
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [dispatch]);
+  }, [dispatch, pathname]);
 
+  return null;
+}
+
+function App() {
   return (
     <Layout>
-      <Home />
-      <About />
-      <Experience />
-      <Projects />
-      <Contact />
+      <ScrollSpy />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/projects/:slug" element={<ProjectDetail />} />
+      </Routes>
     </Layout>
   );
 }
