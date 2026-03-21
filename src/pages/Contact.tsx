@@ -1,23 +1,13 @@
-import { useEffect, useState } from "react";
-import { useFormik } from "formik";
-import * as Yup from "yup";
 import axios from "axios";
-import { toast } from "react-toastify";
-import { motion, AnimatePresence } from "framer-motion";
-import TextInput from "../components/InputFields/TextInput";
-import TextAreaInput from "../components/InputFields/TextAreaInput";
+import { useFormik } from "formik";
+import { motion } from "framer-motion";
+import { useState, type FormEvent } from "react";
 import { useSelector } from "react-redux";
-import {
-  Send,
-  Mail,
-  MapPin,
-  Phone,
-  Linkedin,
-  Github,
-  Twitter,
-} from "lucide-react";
-import SectionHeading from "../components/ui/SectionHeading";
-import Button from "../components/ui/Button";
+import { toast } from "react-toastify";
+import * as Yup from "yup";
+
+import TextAreaInput from "../components/InputFields/TextAreaInput";
+import TextInput from "../components/InputFields/TextInput";
 import InfoCard from "../components/ui/InfoCard";
 
 interface FormValues {
@@ -28,12 +18,9 @@ interface FormValues {
 }
 
 const Contact = () => {
-  const [showModal, setShowModal] = useState(false);
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
   const { isDarkMode } = useSelector(
-    (state: { theme: { isDarkMode: boolean } }) => state.theme
+    (state: { theme: { isDarkMode: boolean } }) => state.theme,
   );
 
   const validationSchema = Yup.object().shape({
@@ -59,7 +46,7 @@ const Contact = () => {
       try {
         await axios.post(
           "https://getform.io/f/b18a1b39-925e-4141-9298-d851a2913cc3",
-          values
+          values,
         );
 
         toast.success("The message has been sent successfully!");
@@ -67,7 +54,7 @@ const Contact = () => {
       } catch (error) {
         console.error(error);
         toast.error(
-          "An error occurred while submitting the form. Please try again later."
+          "An error occurred while submitting the form. Please try again later.",
         );
       } finally {
         setIsSubmitting(false);
@@ -77,7 +64,7 @@ const Contact = () => {
     validateOnChange: false,
   });
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     formik.validateForm().then((errors) => {
@@ -92,10 +79,6 @@ const Contact = () => {
       }
     });
   };
-
-  useEffect(() => {
-    document.title = "Portfolio | Contact";
-  }, []);
 
   return (
     <section id="contact">
@@ -178,7 +161,7 @@ const Contact = () => {
                 className={`w-full bg-blue-500 text-white p-3 rounded-md hover:bg-blue-600 ${
                   isSubmitting ? "opacity-50 cursor-not-allowed" : ""
                 }`}
-                disabled={isSubmitting} // Disable when submitting
+                disabled={isSubmitting}
               >
                 {isSubmitting ? "Submitting..." : "Let's talk"}
               </button>
@@ -186,8 +169,6 @@ const Contact = () => {
           </div>
         </div>
       </div>
-
-      {/* <Footer /> */}
     </section>
   );
 };

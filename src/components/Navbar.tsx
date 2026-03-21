@@ -1,17 +1,20 @@
-import { useState, useEffect, useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Menu, X } from "lucide-react";
-import { FaBars, FaMoon, FaTimes } from "react-icons/fa";
-import { CiLight } from "react-icons/ci";
 import {
   motion,
   useScroll,
   useMotionValueEvent,
   AnimatePresence,
 } from "framer-motion";
-import { toggleMenu, closeMenu } from "../store/slices/uiSlice";
+import { FileText } from "lucide-react";
+import { useState, useEffect, useCallback } from "react";
+import { CiLight } from "react-icons/ci";
+import { FaBars, FaMoon, FaTimes } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useLocation } from "react-router-dom";
+
+import { useResumePreview } from "../contexts/ResumePreviewContext";
 import { RootState } from "../store";
 import { toggleTheme } from "../store/slices/themeSlice";
+import { closeMenu } from "../store/slices/uiSlice";
 
 const navLinks = [
   { id: "home", label: "Home" },
@@ -24,8 +27,11 @@ const navLinks = [
 const Navbar = () => {
   const [nav, setNav] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { openResumePreview } = useResumePreview();
   const { isDarkMode } = useSelector(
-    (state: { theme: { isDarkMode: boolean } }) => state.theme
+    (state: { theme: { isDarkMode: boolean } }) => state.theme,
   );
 
   const { scrollYProgress } = useScroll();
@@ -50,9 +56,7 @@ const Navbar = () => {
     }
   });
 
-  const { isMenuOpen, activeSection } = useSelector(
-    (state: RootState) => state.ui
-  );
+  const { activeSection } = useSelector((state: RootState) => state.ui);
   const [isScrolled, setIsScrolled] = useState(false);
 
   const handleToggleTheme = useCallback(() => {
@@ -81,16 +85,26 @@ const Navbar = () => {
   }, []);
 
   const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      const offset = 0; // Height of the fixed navbar
-      const elementPosition = element.offsetTop - offset;
-      window.scrollTo({
-        top: elementPosition,
-        behavior: "smooth",
-      });
-      dispatch(closeMenu());
+    const runScroll = () => {
+      const element = document.getElementById(id);
+      if (element) {
+        const offset = 0;
+        const elementPosition = element.offsetTop - offset;
+        window.scrollTo({
+          top: elementPosition,
+          behavior: "smooth",
+        });
+      }
+    };
+
+    if (location.pathname !== "/") {
+      navigate("/");
+      window.setTimeout(runScroll, 80);
+    } else {
+      runScroll();
     }
+    dispatch(closeMenu());
+    setNav(false);
   };
 
   return (
@@ -132,6 +146,24 @@ const Navbar = () => {
                 </button>
               </li>
             ))}
+            <li
+              className={`flex items-center pl-3 ml-1 border-l ${
+                isDarkMode ? "border-gray-600" : "border-gray-300"
+              }`}
+            >
+              <button
+                type="button"
+                onClick={openResumePreview}
+                className={`flex items-center gap-1.5 text-sm font-medium ${
+                  isDarkMode
+                    ? "text-white hover:text-gray-300"
+                    : "text-black hover:text-gray-600"
+                }`}
+              >
+                <FileText className="w-4 h-4 shrink-0" aria-hidden />
+                Resume
+              </button>
+            </li>
           </ul>
         </div>
 
@@ -162,7 +194,7 @@ const Navbar = () => {
         {/* Mobile Icons */}
         <div className="flex md:hidden items-center justify-end gap-4">
           <div
-            className={`cursor-pointer text-xl p-2 rounded-md border $${
+            className={`cursor-pointer text-xl p-2 rounded-md border ${
               isDarkMode
                 ? "border-white bg-black text-white"
                 : "border-black bg-white text-black"
@@ -237,6 +269,23 @@ const Navbar = () => {
                 </button>
               </li>
             ))}
+            <li className="mt-4 pt-4 border-t border-gray-600/40 w-full max-w-xs px-3">
+              <button
+                type="button"
+                onClick={() => {
+                  openResumePreview();
+                  setNav(false);
+                }}
+                className={`flex items-center gap-2 py-2 text-lg font-medium ${
+                  isDarkMode
+                    ? "text-gray-200 hover:text-white"
+                    : "text-gray-800 hover:text-black"
+                }`}
+              >
+                <FileText className="w-5 h-5" aria-hidden />
+                View résumé
+              </button>
+            </li>
           </motion.ul>
         )}
       </motion.nav>

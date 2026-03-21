@@ -1,11 +1,13 @@
+import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { motion } from "framer-motion";
-import Navbar from "./Navbar";
+
 import { RootState } from "../store";
 import { updateCursorPosition, closeMenu } from "../store/slices/uiSlice";
-import CustomCursor from "./ui/CustomCursor";
+
+import Navbar from "./Navbar";
 import SocialLinks from "./SocialLinks";
+import CustomCursor from "./ui/CustomCursor";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const dispatch = useDispatch();

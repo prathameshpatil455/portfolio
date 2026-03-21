@@ -1,10 +1,10 @@
-import React from "react";
-import { InfoCard, ImageCard, Experience, AboutMe } from "./BentoGridItems";
 import { useSelector } from "react-redux";
+
+import { InfoCard, ImageCard, AboutMe } from "./BentoGridItems";
 
 const BentoGrid = () => {
   const { isDarkMode } = useSelector(
-    (state: { theme: { isDarkMode: boolean } }) => state.theme
+    (state: { theme: { isDarkMode: boolean } }) => state.theme,
   );
 
   return (
@@ -14,7 +14,6 @@ const BentoGrid = () => {
       }`}
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {/* Left Column */}
         <div
           className={`flex items-center justify-center w-full h-full max-w-md max-h-[600px]  p-4 rounded-2xl ${
             isDarkMode ? "bg-black" : "bg-white"
@@ -23,7 +22,6 @@ const BentoGrid = () => {
           <ImageCard />
         </div>
 
-        {/* Right Column */}
         <div className="flex flex-col gap-4">
           <div
             className={`p-4 rounded-2xl ${

@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 const CustomCursor: React.FC = () => {
   const [isHovered, setIsHovered] = useState(false);
   const { isDarkMode } = useSelector(
-    (state: { theme: { isDarkMode: boolean } }) => state.theme
+    (state: { theme: { isDarkMode: boolean } }) => state.theme,
   );
 
   const [cursorColor, setCursorColor] = useState(
-    isDarkMode ? "white" : "black"
+    isDarkMode ? "white" : "black",
   );
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);

@@ -1,10 +1,9 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
 
 const ScrollDown = () => {
   const { isDarkMode } = useSelector(
-    (state: { theme: { isDarkMode: boolean } }) => state.theme
+    (state: { theme: { isDarkMode: boolean } }) => state.theme,
   );
 
   return (

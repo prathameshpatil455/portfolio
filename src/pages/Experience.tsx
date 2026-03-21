@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Code, Server, Laptop, Brain } from "lucide-react";
-import TechnologiesProvider from "../components/ui/TechnologiesProvider";
+import { useState } from "react";
 import { useSelector } from "react-redux";
+
+import TechnologiesProvider from "../components/ui/TechnologiesProvider";
 
 type Category = "frontend" | "backend" | "developer_tools" | "data_analysis";
 
@@ -51,12 +52,8 @@ const Experience = () => {
   const [selectedCategory, setSelectedCategory] =
     useState<Category>("frontend");
   const { isDarkMode } = useSelector(
-    (state: { theme: { isDarkMode: boolean } }) => state.theme
+    (state: { theme: { isDarkMode: boolean } }) => state.theme,
   );
-
-  useEffect(() => {
-    document.title = "Portfolio | Experience";
-  }, []);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -216,7 +213,7 @@ const Experience = () => {
                     >
                       <TechnologiesProvider skillName={skill} index={index} />
                     </motion.div>
-                  )
+                  ),
                 )}
               </div>
             </motion.div>

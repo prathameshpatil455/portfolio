@@ -1,6 +1,5 @@
-/* eslint-disable react/prop-types */
-import React, { useState, ChangeEvent } from "react";
 import { TextField } from "@mui/material";
+import React, { useState, ChangeEvent } from "react";
 
 interface TextAreaInputProps {
   label: string;
@@ -62,8 +61,8 @@ const TextAreaInput = ({
                 ? "rgba(255, 255, 255, 0.5)"
                 : "rgba(0, 0, 0, 0.5)"
               : isDarkMode
-              ? "rgba(255, 255, 255, 0.7)"
-              : "rgba(0, 0, 0, 0.7)",
+                ? "rgba(255, 255, 255, 0.7)"
+                : "rgba(0, 0, 0, 0.7)",
           },
         }}
         InputProps={{

@@ -1,19 +1,18 @@
-import { useEffect } from "react";
 import { motion } from "framer-motion";
-import { MdOutlineKeyboardArrowRight } from "react-icons/md";
+import { FileText } from "lucide-react";
 import { FaMapMarkerAlt } from "react-icons/fa";
+import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { useSelector } from "react-redux";
+
 import ScrollDown from "../components/ui/ScrollDown";
 import WindowJson from "../components/ui/WindowJson";
+import { useResumePreview } from "../contexts/ResumePreviewContext";
 
 const Home = () => {
   const { isDarkMode } = useSelector(
-    (state: { theme: { isDarkMode: boolean } }) => state.theme
+    (state: { theme: { isDarkMode: boolean } }) => state.theme,
   );
-
-  useEffect(() => {
-    document.title = "Portfolio | Home";
-  }, []);
+  const { openResumePreview } = useResumePreview();
 
   const scrollToProjects = () => {
     const projectsSection = document.getElementById("projects");
@@ -90,18 +89,43 @@ const Home = () => {
                   Bangalore, India
                 </p>
               </div>
-              <div
-                className={`group w-fit px-6 py-3 my-2 flex items-center rounded-md border cursor-pointer ${
-                  isDarkMode
-                    ? "text-white border-white hover:bg-white hover:text-black"
-                    : "text-black border-black hover:bg-black hover:text-white"
-                }`}
-                onClick={scrollToProjects}
-              >
-                Portfolio
-                <span className="group-hover:rotate-90 duration-500">
-                  <MdOutlineKeyboardArrowRight size={25} className="ml-1" />
-                </span>
+              <div className="flex flex-wrap items-center gap-3 my-2">
+                <div
+                  className={`group w-fit px-6 py-3 flex items-center rounded-md border cursor-pointer ${
+                    isDarkMode
+                      ? "text-white border-white hover:bg-white hover:text-black"
+                      : "text-black border-black hover:bg-black hover:text-white"
+                  }`}
+                  onClick={scrollToProjects}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      scrollToProjects();
+                    }
+                  }}
+                >
+                  Portfolio
+                  <span className="group-hover:rotate-90 duration-500">
+                    <MdOutlineKeyboardArrowRight size={25} className="ml-1" />
+                  </span>
+                </div>
+                <button
+                  type="button"
+                  onClick={openResumePreview}
+                  className={`group w-fit px-6 py-3 flex items-center gap-2 rounded-md border transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ${
+                    isDarkMode
+                      ? "border-primary text-primary-200 hover:bg-primary hover:text-white focus-visible:ring-offset-black"
+                      : "border-primary text-primary-700 hover:bg-primary hover:text-white focus-visible:ring-offset-white"
+                  }`}
+                >
+                  <FileText
+                    className="w-5 h-5 shrink-0 transition-colors group-hover:text-white"
+                    aria-hidden
+                  />
+                  Résumé
+                </button>
               </div>
             </div>
           </motion.div>
@@ -116,7 +140,7 @@ const Home = () => {
 
             {/* <div className="relative top-0 w-full md:w-1/4">
               <img
-                src={HeroImage}
+                src="/images/HeroImage.png"
                 alt="my profile"
                 className="my-4 max-w-[350px]"
               />

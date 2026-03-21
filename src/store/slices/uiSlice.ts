@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface UiState {
   isMenuOpen: boolean;
@@ -9,11 +9,11 @@ interface UiState {
 const initialState: UiState = {
   isMenuOpen: false,
   cursorPosition: { x: 0, y: 0 },
-  activeSection: 'home',
+  activeSection: "home",
 };
 
 const uiSlice = createSlice({
-  name: 'ui',
+  name: "ui",
   initialState,
   reducers: {
     toggleMenu: (state) => {
@@ -22,7 +22,10 @@ const uiSlice = createSlice({
     closeMenu: (state) => {
       state.isMenuOpen = false;
     },
-    updateCursorPosition: (state, action: PayloadAction<{ x: number; y: number }>) => {
+    updateCursorPosition: (
+      state,
+      action: PayloadAction<{ x: number; y: number }>,
+    ) => {
       state.cursorPosition = action.payload;
     },
     setActiveSection: (state, action: PayloadAction<string>) => {
@@ -31,5 +34,6 @@ const uiSlice = createSlice({
   },
 });
 
-export const { toggleMenu, closeMenu, updateCursorPosition, setActiveSection } = uiSlice.actions;
+export const { toggleMenu, closeMenu, updateCursorPosition, setActiveSection } =
+  uiSlice.actions;
 export default uiSlice.reducer;
